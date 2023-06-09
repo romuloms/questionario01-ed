@@ -18,3 +18,32 @@ prova final ( 3 <= média < 7).
 
 #include <stdio.h>
 
+void AnalisarSituacao(float nota1, float nota2, float nota3, float nota4) {
+  scanf("%f %f %f %f", &nota1, &nota2, &nota3, &nota4);
+
+  float somaNotas = nota1*1 + nota2*2 + nota3*3 + nota4*4;
+  float media = somaNotas / 10;
+  
+  // printf("media: %.2f\n", media);
+
+  if (media >= 9) {
+    printf("aprovado com louvor\n");
+
+  } else if (media >= 7 && media < 9) {
+    printf("aprovado\n"); 
+
+  } else if (media < 7 && media >= 3) {
+    printf("prova final\n");
+
+  } else {
+    printf("reprovado\n");
+
+  }
+}
+
+int main() {
+  float nota1, nota2, nota3, nota4;
+  AnalisarSituacao(nota1, nota2, nota3, nota4);
+
+  return 0;
+}
