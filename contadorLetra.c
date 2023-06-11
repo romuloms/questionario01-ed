@@ -1,24 +1,28 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int countLetterA(const char *text) {
-    int count = 0;
-    for (int i = 0; text[i] != '\0'; i++) {
-        char c = tolower(text[i]);  // Convertendo o caractere para minúsculo
-        if (c == 'a')
-            count++;
+int contaLetraA(const char *texto) {
+  int contador = 0;
+
+  for (int i = 0; texto[i] != '\0'; i++) {
+    char c = tolower(texto[i]);
+
+    if (c == 'a') {
+      contador++;
     }
-    return count;
+  }
+  
+  return contador;
 }
 
 int main() {
-    char text[1000];
+  char texto[1000];
 
-    printf("Digite um texto: ");
-    fgets(text, sizeof(text), stdin);
+  printf("digite o texto: ");
+  fgets(texto, sizeof(texto), stdin);
 
-    int numOccurrences = countLetterA(text);
-    printf("O número de ocorrências da letra 'a' é: %d\n", numOccurrences);
+  int numeroDeOcorrencias = contaLetraA(texto);
+  printf("Numero de letras a na frase: %d\n", numeroDeOcorrencias);
 
-    return 0;
+  return 0;
 }
