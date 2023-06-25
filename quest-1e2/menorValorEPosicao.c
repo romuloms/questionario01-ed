@@ -34,6 +34,6 @@ int main() {
 
   scanVetor(vetor, valores);
   printResultados(vetor, valores);
-
+  
   return 0;
 }
