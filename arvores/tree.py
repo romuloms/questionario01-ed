@@ -39,6 +39,19 @@ class BinaryTree:
             self.postOrderRoute(node.right)
         print(node)
 
+    def height(self, node=None):
+        if node is None:
+            node = self.root
+        hleft = 0
+        hright = 0
+        if node.left:
+            hleft = self.height(node.left)
+        if node.right:
+            hright = self.height(node.right)
+        if hright > hleft:
+            return hright + 1
+        return hleft + 1
+
 def postOrderExampleTree():
     tree = BinaryTree()
     n1 = Node('I')
@@ -69,3 +82,4 @@ if __name__ == "__main__":
     tree = postOrderExampleTree()
     print("Percurso em pós ordem:")
     tree.postOrderRoute()
+    print("Altura: ", tree.height())
