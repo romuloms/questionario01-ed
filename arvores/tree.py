@@ -51,7 +51,24 @@ class BinaryTree:
         if hright > hleft:
             return hright + 1
         return hleft + 1
-
+    
+class BinarySearchTree(BinaryTree):
+    def insert(self, value):
+        parent = None
+        aux = self.root
+        while(aux):
+            parent = aux
+            if value < aux.data:
+                aux = aux.left
+            else:
+                aux = aux.right
+        if parent is None:
+            self.root = Node(value)
+        elif value < parent.data:
+            parent.left = Node(value)
+        else:
+            parent.right = Node(value)
+    
 def postOrderExampleTree():
     tree = BinaryTree()
     n1 = Node('I')
