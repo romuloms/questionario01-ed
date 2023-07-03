@@ -84,7 +84,9 @@ class BinarySearchTree(BinaryTree):
     def search(self, value, node=0):
         if node == 0:
             node = self.root
-        if node is None or node.data == value:
+        if node is None:
+            return node
+        if node.data == value:
             return BinarySearchTree(node)
         if value < node.data:
             return self.search(value, node.left)
