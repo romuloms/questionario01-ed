@@ -10,8 +10,10 @@ class Node:
         return str(self.data)
 
 class BinaryTree:
-    def __init__(self, data=None):
-        if data:
+    def __init__(self, data=None, node=None):
+        if node:
+            self.root = node
+        elif data:
             node = Node(data)
             self.root = node
         else:
@@ -52,6 +54,16 @@ class BinaryTree:
             return hright + 1
         return hleft + 1
     
+    def inOrderRoute(self, node=None):
+        # os parenteses sao especificos para esse exemplo
+        if node is None:
+            node = self.root
+        if node.left:
+            self.inOrderRoute(node.left)
+        print(node, end=' ')
+        if node.right:
+            self.inOrderRoute(node.right)
+    
 class BinarySearchTree(BinaryTree):
     def insert(self, value):
         parent = None
@@ -68,6 +80,15 @@ class BinarySearchTree(BinaryTree):
             parent.left = Node(value)
         else:
             parent.right = Node(value)
+    
+    def search(self, value, node=0):
+        if node == 0:
+            node = self.root
+        if node is None or node.data == value:
+            return BinarySearchTree(node)
+        if value < node.data:
+            return self.search(value, node.left)
+        return self.search(value, node.right)
     
 def postOrderExampleTree():
     tree = BinaryTree()
