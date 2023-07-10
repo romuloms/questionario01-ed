@@ -85,11 +85,16 @@ bool inserirNaPos(ITEM item, int i, LISTA *l);
 */
 bool remover(ITEM item, LISTA *l);
 
+bool removerDaPos(int posicao, LISTA *l);
+
 // Exibicao de um item da lista
 void exibirItem(ITEM i);
 
 // Exibicao da lista sequencial
 void exibirLista(LISTA *l);
+
+// Exibicao da lista de tras para frente
+void exibirListaReversa(LISTA *l);
 
 // Remove todos os valores da lista, deixando-a vazia
 void limpar(LISTA *l);

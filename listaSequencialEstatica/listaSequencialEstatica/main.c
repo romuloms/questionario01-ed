@@ -20,6 +20,37 @@ void imprimirStatus(LISTA *l)
     printf("\n");
 }
 
+// Imprime os elementos da lista na ordem inversa
+void imprimirListaInversa(LISTA *l)
+{
+    printf("Lista inversa: ");
+    exibirListaReversa(l);
+    printf("\n");
+}
+
+// Remove o elemento pela posicao dada
+void testarRemoverNaPos(LISTA *l)
+{
+    printf("=> Teste de Remover na Posicao\n");
+    int posicao;
+    printf("Digite a posicao do valor que quer remover: ");
+    scanf("%d", &posicao);
+    int item = enesimo(posicao, l);
+    
+    if ((posicao >= tamanho(l)) || posicao < 0)
+        printf("Posicao invalida.\n");
+    else
+    {
+        if (removerDaPos(posicao, l))
+        {
+            printf("Item removido: %d\n", item);
+            imprimirStatus(l);
+        }
+        else
+            printf("Erro na remocao\n");
+    }
+}
+
 // Testa a insercao de valores na lista
 void testarInserir(LISTA *l)
 {
@@ -127,9 +158,11 @@ int main(){
     
     inicializar(&l);
     testarInserir(&l);
-    testarInserirNaPos(&l);
-    testarBuscar(&l);
-    testarAlterar(&l);
+//    imprimirListaInversa(&l);
+    testarRemoverNaPos(&l);
+//    testarInserirNaPos(&l);
+//    testarBuscar(&l);
+//    testarAlterar(&l);
     destruir(&l);
     imprimirStatus(&l);
         

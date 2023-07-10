@@ -111,6 +111,8 @@ bool inserirNaPos(ITEM item, int posicao, LISTA *l)
         return false; // lista cheia ou indice invalido
 
     // se for inserido no meio, e necessario abrir espaco para o item
+    // os ultimos elementos vao sendo realocados para uma posicao a frente
+    // abrindo um espaco vazio para o numero desejado na posicao desejada
     for (int j = tamanho(l); j > posicao; j--)
         l->itens[j] = l->itens[j-1];
 
@@ -127,6 +129,9 @@ bool remover(ITEM item, LISTA *l)
     for (i = 0; i < tamanho(l); i++)
         if (igual(item, l->itens[i]))
         {
+            // o trecho seguinte faz o inverso do for na funcao inserirNaPos()
+            // o valor desejado vai ser substituido pelo valor seguinte e
+            // o tamanho da lista diminui em uma unidade
             for (j = i; j < l-> tamanho - 1; j++)
                l->itens[j] = l->itens[j + 1];
 
@@ -134,6 +139,17 @@ bool remover(ITEM item, LISTA *l)
             return true; // achou
         }
     return false; // nao achou
+}
+
+
+bool removerDaPos(int posicao, LISTA *l)
+{
+    if ((tamanho(l) >= MAX) || (posicao > tamanho(l)) || (posicao < 0))
+        return false;
+    for (int i = posicao; i < tamanho(l); i++)
+        l->itens[i] = l->itens[i+1];
+    l->tamanho--;
+    return true;
 }
 
 
@@ -151,6 +167,18 @@ void exibirLista(LISTA *l)
         exibirItem(l->itens[i++]);
         if (i < tamanho(l))
            printf(",");
+    }
+    printf("]");
+}
+
+void exibirListaReversa(LISTA *l)
+{
+    printf("[");
+    for(int i = tamanho(l) - 1; i >= 0;)
+    {
+        exibirItem(l->itens[i--]);
+        if (i >= 0)
+            printf(",");
     }
     printf("]");
 }
