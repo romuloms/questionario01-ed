@@ -104,18 +104,18 @@ bool alterar(ITEM item, int pos, LISTA *l)
 }
 
 
-bool inserirNaPos(ITEM item, int indice, LISTA *l)
+bool inserirNaPos(ITEM item, int posicao, LISTA *l)
 {
     // a posicao tem que estar entre 0 e MAX-1 e ate o tamanho atual
-    if ((tamanho(l) >= MAX) || (indice < 0) || (indice > tamanho(l)))
+    if ((tamanho(l) >= MAX) || (posicao < 0) || (posicao > tamanho(l)))
         return false; // lista cheia ou indice invalido
 
     // se for inserido no meio, e necessario abrir espaco para o item
-    for (int j = tamanho(l); j > indice; j--)
+    for (int j = tamanho(l); j > posicao; j--)
         l->itens[j] = l->itens[j-1];
 
     // coloca o item em um espaco vago e ajusta o tamanho
-    l->itens[indice] = item;
+    l->itens[posicao] = item;
     l->tamanho++;
     return true;
 }
