@@ -73,6 +73,7 @@ bool inserir(ITEM item, LISTA *l)
 
 int buscar(ITEM item, LISTA *l)
 {
+    // confere indice por indice se eh igual ao item passado como argumento na funcao
     for (int pos = 0; pos < tamanho(l); pos++)
        if (igual(item, l->itens[pos]))
            return pos; // achou
@@ -82,6 +83,7 @@ int buscar(ITEM item, LISTA *l)
 
 ITEM enesimo(int n, LISTA *l)
 {
+    // retorna o n-esimo item da lista
     if (n >= 0 && n < tamanho(l))
        return (l->itens[n]);
     else
@@ -93,6 +95,8 @@ bool alterar(ITEM item, int pos, LISTA *l)
 {
     if (pos >= 0 && pos < tamanho(l))
     {
+        // verifica se a posicao existe na lista
+        // se existir, altera o item desejado
         l->itens[pos] = item;
         return true;
     }
@@ -100,18 +104,18 @@ bool alterar(ITEM item, int pos, LISTA *l)
 }
 
 
-bool inserirNaPos(ITEM item, int i, LISTA *l)
+bool inserirNaPos(ITEM item, int indice, LISTA *l)
 {
-    // A posicao tem que estar entre 0 e MAX-1 e ate o tamanho atual
-    if ((tamanho(l) >= MAX) || (i < 0) || (i > tamanho(l)))
+    // a posicao tem que estar entre 0 e MAX-1 e ate o tamanho atual
+    if ((tamanho(l) >= MAX) || (indice < 0) || (indice > tamanho(l)))
         return false; // lista cheia ou indice invalido
 
-    // Se for inserido no meio, e necessario abrir espaco para o item
-    for (int j = tamanho(l); j > i; j--)
+    // se for inserido no meio, e necessario abrir espaco para o item
+    for (int j = tamanho(l); j > indice; j--)
         l->itens[j] = l->itens[j-1];
 
-    // Coloca o item em um espaco vago e ajusta o tamanho
-    l->itens[i] = item;
+    // coloca o item em um espaco vago e ajusta o tamanho
+    l->itens[indice] = item;
     l->tamanho++;
     return true;
 }
