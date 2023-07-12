@@ -87,6 +87,8 @@ bool remover(ITEM item, LISTA *l);
 
 bool removerDaPos(int posicao, LISTA *l);
 
+int buscarEm(ITEM item, int inicio, int fim, LISTA *l);
+
 // Exibicao de um item da lista
 void exibirItem(ITEM i);
 

@@ -81,6 +81,15 @@ int buscar(ITEM item, LISTA *l)
 }
 
 
+int buscarEm(ITEM item, int inicio, int fim, LISTA *l)
+{
+    for (int posicao = inicio; posicao < fim; posicao ++)
+        if (igual(item, l->itens[posicao]))
+            return posicao;
+    return -1;
+}
+
+
 ITEM enesimo(int n, LISTA *l)
 {
     // retorna o n-esimo item da lista

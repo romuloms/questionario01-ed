@@ -37,7 +37,7 @@ void testarRemoverNaPos(LISTA *l)
     scanf("%d", &posicao);
     int item = enesimo(posicao, l);
     
-    if ((posicao >= tamanho(l)) || posicao < 0)
+    if ((posicao >= tamanho(l)) || (posicao < 0))
         printf("Posicao invalida.\n");
     else
     {
@@ -73,7 +73,7 @@ void testarInserir(LISTA *l)
 // Testa a insercao de valores na lista escolhendo a posicao
 void testarInserirNaPos(LISTA *l)
 {
-    printf("=> Teste de InserirNaPos\n");
+    printf("=> Teste de Inserir na posicao\n");
     int qtd;
     printf("Quantos itens deseja inserir na lista? ");
     scanf("%d", &qtd);
@@ -125,6 +125,25 @@ void testarBuscar(LISTA *l)
 
 }
 
+void testarBuscarEm(LISTA *l)
+{
+    printf("=> Teste de Busca em um intervalo\n");
+    ITEM item;
+    int inicio, fim, pos;
+    printf("Digite o valor que deseja buscar: ");
+    scanf("%d", &item);
+    printf("Digite o valor inicial do intervalo: ");
+    scanf("%d", &inicio);
+    printf("Digite o valor final do intervalo: ");
+    scanf("%d", &fim);
+    pos = buscarEm(item, inicio, fim, l);
+    
+    if (pos != -1)
+        printf("Valor encontrado na posicao: %d\n", pos);
+    else
+        printf("Valor nao encontrado no intervalo passado.\n");
+}
+
 // Testa a alteracao de um valor numa posicao
 void testarAlterar(LISTA *l)
 {
@@ -159,10 +178,11 @@ int main(){
     inicializar(&l);
     testarInserir(&l);
 //    imprimirListaInversa(&l);
-    testarRemoverNaPos(&l);
+//    testarRemoverNaPos(&l);
 //    testarInserirNaPos(&l);
 //    testarBuscar(&l);
 //    testarAlterar(&l);
+    testarBuscarEm(&l);
     destruir(&l);
     imprimirStatus(&l);
         
