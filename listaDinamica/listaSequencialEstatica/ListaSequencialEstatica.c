@@ -84,6 +84,22 @@ bool removerNaPos(LISTA* lista, int indice)
     
     return true;
 }
+
+
+void destruirLista(LISTA *lista)
+{
+    if (lista == NULL)
+    {
+        printf("Erro: lista nao existe.\n");
+        return;
+    }
+    
+    for (int i = 0; i < lista->tamanho; i++)
+        free(lista->itens[i]);
+
+    free(lista->itens);
+    free(lista);
+}
 //char compare(ITEM x, ITEM y)
 //{
 //    return x > y ? 1 : (x < y ? -1 : 0);

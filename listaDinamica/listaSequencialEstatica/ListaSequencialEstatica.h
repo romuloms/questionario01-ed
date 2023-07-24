@@ -25,6 +25,16 @@ typedef struct {
     int tamanho;
 } LISTA;
 
+
+LISTA* criarLista(int capacidade);
+
+bool inserirItem(LISTA* lista, int valor);
+
+bool removerNaPos(LISTA* lista, int indice);
+
+void destruirLista(LISTA *lista);
+
+
 /*
    Compara o item x com o y, retornando:
      1 caso x > y
