@@ -15,18 +15,18 @@
 
 #define MAX 1000
 
-typedef struct {
-    int valor;
-} ITEM;
+typedef int ITEM;
 
 typedef struct {
-    ITEM** itens;
-    int capacidade;
+    ITEM* itens;
     int tamanho;
+    int capacidade;
 } LISTA;
 
 
-LISTA* criarLista(int capacidade);
+void criarLista(LISTA* lista, int capacidade);
+
+void exibirLista(LISTA *lista);
 
 bool inserirItem(LISTA* lista, int valor);
 

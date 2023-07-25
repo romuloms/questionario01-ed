@@ -12,30 +12,57 @@
 #include <stdbool.h>
 
 
-LISTA* criarLista(int capacidade)
+void criarLista(LISTA* lista, int capacidade)
 {
-    LISTA* lista = (LISTA*)malloc(sizeof(LISTA));
-    if (lista == NULL)
-    {
-        printf("Erro: memoria insuficiente para criar a lista.\n");
-        
-        return NULL;
-    }
-    lista->itens = (ITEM**)malloc(capacidade*sizeof(ITEM*));    // aqui eh o vetor de apontadores
-    if (lista->itens == NULL)
-    {
-        printf("Erro: memoria insuficiente para criar lista.\n");
-        free(lista);
-        return NULL;
-    }
-    lista->capacidade = capacidade;
     lista->tamanho = 0;
-    
-    return lista;
+    lista->capacidade = capacidade;
+    lista->itens = malloc(capacidade * sizeof(ITEM));   // itens: vetor de inteiros 
 }
 
 
-bool inserirItem(LISTA* lista, int valor)
+int tamanho(LISTA *lista)
+{
+    return lista->tamanho;
+}
+
+
+bool cheia(LISTA *lista)
+{
+    return tamanho(lista) == lista->capacidade;
+}
+
+
+bool vazia(LISTA *lista)
+{
+    return tamanho(lista) == 0;
+}
+
+
+void aumentarLista(LISTA *lista)
+{
+    lista->itens = realloc(lista->itens, 2 * lista->capacidade * sizeof(ITEM));
+}
+
+
+void exibirItem(ITEM item)
+{
+    printf("%d", item);
+}
+
+void exibirLista(LISTA *lista)
+{
+    printf("[");
+    for(int i = 0; i < tamanho(lista);)
+    {
+        exibirItem(lista->itens[i++]);
+        if (i < tamanho(lista))
+           printf(",");
+    }
+    printf("]");
+}
+
+
+bool inserirItem(LISTA* lista, ITEM item)
 {
     if (lista == NULL)
     {
@@ -43,47 +70,38 @@ bool inserirItem(LISTA* lista, int valor)
         return false;
     }
     
-    if (lista->tamanho >= lista->capacidade)
+    if (cheia(lista))
     {
-        printf("Erro: lista esta cheia.\n");
-        return false;
+        aumentarLista(lista);
     }
     
-    ITEM* novoItem = (ITEM*)malloc(sizeof(ITEM));   // aqui eh o apontador que vai apontar pra novoItem
-    if (novoItem == NULL)
-    {
-        printf("Erro: memoria insuficiente para inserir o item na lista");
-        return false;
-    }
-    
-    novoItem->valor = valor;
-    lista->itens[lista->tamanho] = novoItem;
+    lista->itens[lista->tamanho] = item;
     lista->tamanho++;
     
     return true;
 }
 
 
-bool removerNaPos(LISTA* lista, int indice)
-{
-    if (lista == NULL)
-    {
-        printf("Erro: lista nao existe.\n");
-        return false;
-    }
-    if (indice < 0 || indice >= lista->tamanho)
-    {
-        printf("Erro: indice inexistente.\n");
-        return false;
-    }
-    
-    free(lista->itens[indice]);
-    
-    for (int i = indice; i < lista->tamanho - 1; i++)
-        lista->itens[i] = lista->itens[i+1];
-    
-    return true;
-}
+//bool removerNaPos(LISTA* lista, int indice)
+//{
+//    if (lista == NULL)
+//    {
+//        printf("Erro: lista nao existe.\n");
+//        return false;
+//    }
+//    if (indice < 0 || indice >= lista->tamanho)
+//    {
+//        printf("Erro: indice inexistente.\n");
+//        return false;
+//    }
+//
+//    free(lista->itens[indice]);
+//
+//    for (int i = indice; i < lista->tamanho - 1; i++)
+//        lista->itens[i] = lista->itens[i+1];
+//
+//    return true;
+//}
 
 
 void destruirLista(LISTA *lista)
@@ -94,11 +112,8 @@ void destruirLista(LISTA *lista)
         return;
     }
     
-    for (int i = 0; i < lista->tamanho; i++)
-        free(lista->itens[i]);
-
     free(lista->itens);
-    free(lista);
+    lista->tamanho = 0;
 }
 //char compare(ITEM x, ITEM y)
 //{

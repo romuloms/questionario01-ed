@@ -13,62 +13,55 @@
 #include "ListaSequencialEstatica.h"
 
 // Imprime na tela o status da lista
-//void imprimirStatus(LISTA *l)
-//{
-//    printf("Tamanho = %d\n", tamanho(l));
-//    exibirLista(l);
-//    printf("\n");
-//}
-//
-//// Imprime os elementos da lista na ordem inversa
-//void imprimirListaInversa(LISTA *l)
-//{
-//    printf("Lista inversa: ");
-//    exibirListaReversa(l);
-//    printf("\n");
-//}
-//
-//// Remove o elemento pela posicao dada
-//void testarRemoverNaPos(LISTA *l)
+void imprimirStatus(LISTA *lista)
+{
+    printf("Tamanho = %d\n", lista->tamanho);
+    exibirLista(lista);
+    printf("\n");
+}
+
+// Remove o elemento pela posicao dada
+//void testarRemoverNaPos(LISTA *lista)
 //{
 //    printf("=> Teste de Remover na Posicao\n");
 //    int posicao;
 //    printf("Digite a posicao do valor que quer remover: ");
 //    scanf("%d", &posicao);
-//    int item = enesimo(posicao, l);
+//    ITEM *i = lista->itens[posicao];
+//    int item = i->valor;
 //
-//    if ((posicao >= tamanho(l)) || (posicao < 0))
+//    if ((posicao >= lista->tamanho) || (posicao < 0))
 //        printf("Posicao invalida.\n");
 //    else
 //    {
-//        if (removerDaPos(posicao, l))
+//        if (removerNaPos(lista, posicao))
 //        {
 //            printf("Item removido: %d\n", item);
-//            imprimirStatus(l);
+//            imprimirStatus(lista);
 //        }
 //        else
 //            printf("Erro na remocao\n");
 //    }
 //}
 //
-//// Testa a insercao de valores na lista
-//void testarInserir(LISTA *l)
-//{
-//    printf("=> Teste de Inserir\n");
-//    int qtd;
-//    printf("Quantos itens deseja guardar na lista? ");
-//    scanf("%d", &qtd);
-//
-//    ITEM item;
-//    for (int i = 0; i < qtd; i++)
-//    {
-//        printf("Digite o valor para a posicao [%d]: ", i);
-//        scanf("%d", &item);
-//        inserir(item, l);
-//    }
-//
-//    imprimirStatus(l);
-//}
+// Testa a insercao de valores na lista
+void testarInserir(LISTA *l)
+{
+    printf("=> Teste de Inserir\n");
+    int qtd;
+    printf("Quantos itens deseja guardar na lista? ");
+    scanf("%d", &qtd);
+
+    int item;
+    for (int i = 0; i < qtd; i++)
+    {
+        printf("Digite o valor para a posicao [%d]: ", i);
+        scanf("%d", &item);
+        inserirItem(l, item);
+    }
+
+    imprimirStatus(l);
+}
 //
 //// Testa a insercao de valores na lista escolhendo a posicao
 //void testarInserirNaPos(LISTA *l)
@@ -173,7 +166,12 @@
 /////////////////////////////////////////////////////
 
 int main(){
-    
+    LISTA l;
+        
+    criarLista(&l, 5);
+    testarInserir(&l);
+    destruirLista(&l);
+    imprimirStatus(&l);
         
     getchar();
     return 0;
