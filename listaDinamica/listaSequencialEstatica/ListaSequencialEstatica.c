@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <math.h>
 
 
 int compare(ITEM x, ITEM y)
@@ -47,6 +48,7 @@ bool vazia(LISTA *lista)
 void aumentarLista(LISTA *lista)
 {
     lista->itens = realloc(lista->itens, 2 * lista->capacidade * sizeof(ITEM));
+    lista->capacidade = 2 * lista->capacidade * sizeof(ITEM);
 }
 
 
@@ -110,6 +112,29 @@ bool inserirItem(LISTA* lista, ITEM item)
         else
             return inserirNaPosicao(lista, i, item);
     }
+}
+
+
+int buscaBinaria(LISTA *lista, int item)
+{
+    int inicio = 0;
+    int fim = tamanho(lista) - 1;
+    int meio, chute;
+    
+    while (inicio <= fim)
+    {
+        meio = (int)floor((inicio+fim)/2);
+        chute = lista->itens[meio];
+        
+        if (chute == item)
+            return meio;
+        if (chute > item)
+            fim = meio - 1;
+        else
+            inicio = meio + 1;
+    }
+    
+    return -1;  // nao achou  numero
 }
 
 

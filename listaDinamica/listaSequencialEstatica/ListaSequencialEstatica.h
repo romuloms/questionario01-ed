@@ -30,6 +30,8 @@ void exibirLista(LISTA *lista);
 
 bool inserirItem(LISTA* lista, int valor);
 
+int buscaBinaria(LISTA *lista, int item);
+
 bool removerNaPos(LISTA* lista, int indice);
 
 void destruirLista(LISTA *lista);
