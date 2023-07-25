@@ -12,6 +12,12 @@
 #include <stdbool.h>
 
 
+int compare(ITEM x, ITEM y)
+{
+    return x > y ? 1 : (x < y ? -1 : 0);
+}
+
+
 void criarLista(LISTA* lista, int capacidade)
 {
     lista->tamanho = 0;
@@ -61,6 +67,20 @@ void exibirLista(LISTA *lista)
     printf("]");
 }
 
+bool inserirNaPosicao(LISTA *lista, int i, ITEM item)
+{
+    if ((tamanho(lista) >= lista->capacidade) || (i < 0) || (i > tamanho(lista)))
+        return false;
+    
+    for (int j = tamanho(lista); j > i; j--)
+        lista->itens[j] = lista->itens[j-1];
+    
+    lista->itens[i] = item;
+    lista->tamanho++;
+    
+    return true;
+}
+
 
 bool inserirItem(LISTA* lista, ITEM item)
 {
@@ -75,10 +95,21 @@ bool inserirItem(LISTA* lista, ITEM item)
         aumentarLista(lista);
     }
     
-    lista->itens[lista->tamanho] = item;
-    lista->tamanho++;
+    int i = 0;
     
-    return true;
+    while (i < tamanho(lista) && compare(lista->itens[i], item) == -1)
+        i++;
+    
+    if (i == tamanho(lista))
+        return inserirNaPosicao(lista, i, item);
+    
+    else
+    {
+        if (compare(lista->itens[i], item) == 0)
+            return false;
+        else
+            return inserirNaPosicao(lista, i, item);
+    }
 }
 
 
