@@ -74,6 +74,7 @@ bool inserirNaPosicao(LISTA *lista, int i, ITEM item)
     if ((tamanho(lista) >= lista->capacidade) || (i < 0) || (i > tamanho(lista)))
         return false;
     
+    // insercao no meio da lista
     for (int j = tamanho(lista); j > i; j--)
         lista->itens[j] = lista->itens[j-1];
     
@@ -99,6 +100,7 @@ bool inserirItem(LISTA* lista, ITEM item)
     
     int i = 0;
     
+    // enquanto o item for menor que o item da lista, incrementa i (insercao ordenada)
     while (i < tamanho(lista) && compare(lista->itens[i], item) == -1)
         i++;
     
@@ -107,7 +109,7 @@ bool inserirItem(LISTA* lista, ITEM item)
     
     else
     {
-        if (compare(lista->itens[i], item) == 0)
+        if (compare(lista->itens[i], item) == 0)    // checa se ja existe um item igual na lista
             return false;
         else
             return inserirNaPosicao(lista, i, item);
@@ -146,7 +148,7 @@ void destruirLista(LISTA *lista)
         return;
     }
     
-    free(lista->itens);
+    free(lista->itens);     // libera os itens da lista que sao ponteiros
     lista->tamanho = 0;
 }
 

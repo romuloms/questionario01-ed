@@ -32,7 +32,7 @@ void testarInserir(LISTA *l)
     int item;
     for (int i = 0; i < qtd; i++)
     {
-        printf("Digite o valor para a posicao [%d]: ", i);
+        printf("Digite o valor: ");
         scanf("%d", &item);
         inserirItem(l, item);
     }
@@ -64,6 +64,7 @@ int main(){
     criarLista(&l, 5);
     testarInserir(&l);
     testarBuscar(&l);
+    testarInserir(&l);
     destruirLista(&l);
     imprimirStatus(&l);
         

@@ -13,7 +13,6 @@
 #ifndef LISTA_SEQ_ESTATICA
 #define LISTA_SEQ_ESTATICA
 
-#define MAX 1000
 
 typedef int ITEM;
 
