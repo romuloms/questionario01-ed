@@ -23,9 +23,21 @@ typedef struct {
 } LISTA;
 
 
+int compare(ITEM x, ITEM y);
+
 void criarLista(LISTA* lista, int capacidade);
 
+int tamanho(LISTA *lista);
+
+bool cheia(LISTA *lista);
+
+bool vazia(LISTA *lista);
+
+void exibirItem(ITEM item);
+
 void exibirLista(LISTA *lista);
+
+bool inserirNaPosicao(LISTA *lista, int i, ITEM item);
 
 bool inserirItem(LISTA* lista, int valor);
 
