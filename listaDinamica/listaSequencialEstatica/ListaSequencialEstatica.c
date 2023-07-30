@@ -98,11 +98,7 @@ bool inserirItem(LISTA* lista, ITEM item)
         aumentarLista(lista);
     }
     
-    int i = 0;
-    
-    // enquanto o item for menor que o item da lista, incrementa i (insercao ordenada)
-    while (i < tamanho(lista) && compare(lista->itens[i], item) == -1)
-        i++;
+    int i = buscaBinaria(lista, item);
     
     if (i == tamanho(lista))
         return inserirNaPosicao(lista, i, item);
@@ -136,7 +132,7 @@ int buscaBinaria(LISTA *lista, int item)
             inicio = meio + 1;
     }
     
-    return -1;  // nao achou  numero
+    return inicio;  // nao achou o item, retorna posicao que deveria entrar
 }
 
 

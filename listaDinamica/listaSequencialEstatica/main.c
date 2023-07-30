@@ -49,7 +49,7 @@ void testarBuscar(LISTA *l)
     ITEM item;
     scanf("%d", &item);
     int pos = buscaBinaria(l, item);
-    if (pos >= 0)
+    if (l->itens[pos] == item)
         printf("Achou na posicao: %d\n", pos);
     else
         printf("Nao achou o item na lista\n");
