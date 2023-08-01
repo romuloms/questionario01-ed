@@ -19,3 +19,6 @@ for item in items:
         print(item, "nao encontrado")
     else:
         print(r.root.data, "encontrado")
+
+bst.reverseOrderRoute()
+print()

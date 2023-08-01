@@ -63,6 +63,16 @@ class BinaryTree:
         print(node, end=' ')
         if node.right:
             self.inOrderRoute(node.right)
+
+    def reverseOrderRoute(self, node=None):
+        # os parenteses sao especificos para esse exemplo
+        if node is None:
+            node = self.root
+        if node.right:
+            self.reverseOrderRoute(node.right)
+        print(node, end=' ')
+        if node.left:
+            self.reverseOrderRoute(node.left)
     
 class BinarySearchTree(BinaryTree):
     def insert(self, value):
@@ -123,3 +133,5 @@ if __name__ == "__main__":
     print("Percurso em pós ordem:")
     tree.postOrderRoute()
     print("Altura: ", tree.height())
+    print()
+    tree.inOrderRoute()
