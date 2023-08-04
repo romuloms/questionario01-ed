@@ -13,3 +13,5 @@ linkedList.append(1)
 linkedList.append(4)
 linkedList.append(5)
 print(len(linkedList))
+
+linkedList.printList()

@@ -65,3 +65,15 @@ class LinkedList:
             pointer = pointer.next
             i = i+1
         raise ValueError("{} is not in list".format(elem))
+    
+    def printList(self):
+        pointer = self.head
+
+        print("[", end="")
+        while (pointer):
+            print(pointer.data, end="")
+            if (pointer.next):
+                print(", ", end="")
+            pointer = pointer.next
+        print("]")
+        
