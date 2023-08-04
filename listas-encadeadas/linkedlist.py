@@ -22,6 +22,9 @@ class LinkedList:
         """Retorna o tamanho da lista"""
         return self.__size
     
+    def length(self):
+        print(self.__len__())
+    
     def get(self, index):
         # a = lista.get(6)
         return self.__getitem__(index)
