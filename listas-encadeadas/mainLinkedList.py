@@ -15,3 +15,6 @@ linkedList.append(5)
 linkedList.length()
 
 linkedList.printList()
+linkedList.removeElement(3)
+linkedList.printList()
+linkedList.length()

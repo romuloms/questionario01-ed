@@ -69,6 +69,26 @@ class LinkedList:
             i = i+1
         raise ValueError("{} is not in list".format(elem))
     
+    def removeElement(self, elem):
+        i = self.index(elem)
+        pointer = self.head
+
+        if (pointer.data == elem):
+            pointer.data = None
+            self.head = pointer.next
+        else:
+            for j in range(i-1):
+                if pointer:
+                    pointer = pointer.next
+                else:
+                    raise IndexError("list index out of range")
+            if pointer:
+                pointer.next.data = None
+                pointer.next = pointer.next.next
+                self.__size -= 1
+            else:
+                raise IndexError("list index out of range")
+    
     def printList(self):
         pointer = self.head
 
