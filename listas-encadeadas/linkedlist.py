@@ -4,31 +4,31 @@ from node import Node
 class LinkedList:
     def __init__(self):
         self.head = None
-        self._size = 0
+        self.__size = 0
 
     def append(self, elem):
         if self.head:
             # insercao quando a lista ja possui elementos
             pointer = self.head
-            while(pointer.next):
+            while (pointer.next):
                 pointer = pointer.next
             pointer.next = Node(elem)
         else:
             # primeira insercao
             self.head = Node(elem)
-        self._size = self._size + 1
+        self.__size = self.__size + 1
 
     def __len__(self):
         """Retorna o tamanho da lista"""
-        return self._size
+        return self.__size
     
     def get(self, index):
         # a = lista.get(6)
-        pass
+        return self.__getitem__(index)
 
     def set(self, index, elem):
         # lista.set(5, 9)
-        pass
+        return self.__setitem__(index, elem)
 
     def __getitem__(self, index):
         # a = lista[6]
@@ -59,7 +59,7 @@ class LinkedList:
         """Retorna o indice do elemento na lista"""
         pointer = self.head
         i = 0
-        while(pointer):
+        while (pointer):
             if pointer.data == elem:
                 return i
             pointer = pointer.next
