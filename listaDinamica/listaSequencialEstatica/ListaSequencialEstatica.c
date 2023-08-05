@@ -118,9 +118,7 @@ LISTA* clonarLista(LISTA* listaOriginal, LISTA* listaClonada)
     criarLista(listaClonada, listaOriginal->capacidade);
     
     for (int i = 0; i < listaOriginal->tamanho; i++)
-    {
         inserirItem(listaClonada, listaOriginal->itens[i]);
-    }
     
     return listaClonada;
 }
