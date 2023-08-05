@@ -90,6 +90,8 @@ bool inserirNaPos(ITEM item, int i, LISTA *l);
 */
 bool remover(ITEM item, LISTA *l);
 
+bool removerNaPos(ITEM *item, int i, LISTA *l);
+
 // Exibicao de um item da lista
 void exibirItem(ITEM i);
 

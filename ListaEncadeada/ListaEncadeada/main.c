@@ -139,6 +139,45 @@ void testarAlterar(LISTA *l)
     }
 }
 
+
+void testarRemover(LISTA *l)
+{
+    printf("=> Teste da Remocao\n");
+    int i;
+    printf("Digite o item que deseja remover (ou -1 para sair): ");
+    scanf("%d", &i);
+    while (i != -1)
+    {
+        if (remover(i, l))
+           printf("Removeu com sucesso\n");
+        else
+           printf("Erro na remocao\n");
+
+        imprimirStatus(l);
+
+        // Leitura do proximo item a ser removido
+        printf("Digite o item que deseja remover (ou -1 para sair): ");
+        scanf("%d", &i);
+    }
+}
+
+
+void testarRemoverNaPos(LISTA *l)
+{
+    printf("=> Teste da Remocao na posicao\n");
+    int p;
+    int item;
+    printf("Digite a posicao que deseja remover (ou -1 para sair): ");
+    scanf("%d", &p);
+    
+    if (removerNaPos(&item, p, l))
+       printf("Removeu com sucesso o elemento %d\n", item);
+    else
+       printf("Erro na remocao\n");
+
+    imprimirStatus(l);
+}
+
 /////////////////////////////////////////////////////
 
 int main(){
@@ -148,8 +187,10 @@ int main(){
     testarInserir(&l);
 //    testarInserirNaPos(&l);
     testarInserirNoFinal(&l);
-    testarBuscar(&l);
-    testarAlterar(&l);
+//    testarBuscar(&l);
+//    testarAlterar(&l);
+//    testarRemover(&l);
+    testarRemoverNaPos(&l);
     destruir(&l);
     imprimirStatus(&l);
         

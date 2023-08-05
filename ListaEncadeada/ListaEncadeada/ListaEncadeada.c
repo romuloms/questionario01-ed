@@ -170,6 +170,27 @@ bool inserirNaPos(ITEM item, int i, LISTA *l)
 }
 
 
+bool removerNaPos(ITEM *elem, int i, LISTA *l)
+{
+    if (i < 0 || i >= tamanho(l))
+    {
+        printf("Posicao de remocao invalida (%d)\n", i);
+        exit(EXIT_FAILURE);
+    }
+    
+    if (noNaPosicao(i, l) == NULL)
+    {
+        printf("Posicao de remocao invalida (%d)\n", i);
+        exit(EXIT_FAILURE);
+    }
+    
+    NO* pAtual = noNaPosicao(i, l);
+    *elem = (pAtual->item);
+    remover(pAtual->item, l);
+    return true;
+}
+
+
 bool remover(ITEM item, LISTA *l)
 {
    if (vazia(l))
@@ -191,12 +212,13 @@ bool remover(ITEM item, LISTA *l)
       // Percorre a lista ate encontrar o item procurado.
       // Remove o item e corrige o apontador prox do NO anterior para
       // apontar para o proximo NO do item sendo removido
-      while (pAnterior->prox)  // prox != NULL
-      {
+       while ((pAnterior->prox))  // prox != NULL
+       {
          NO* pAtual = pAnterior->prox;
 
          if (igual(item, pAtual->item))
          {
+            l->cauda = pAnterior;
             pAnterior->prox = pAtual->prox;
             free(pAtual);
             l->tamanho--;
