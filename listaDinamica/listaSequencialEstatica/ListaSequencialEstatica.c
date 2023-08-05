@@ -113,6 +113,19 @@ bool inserirItem(LISTA* lista, ITEM item)
 }
 
 
+LISTA* clonarLista(LISTA* listaOriginal, LISTA* listaClonada)
+{
+    criarLista(listaClonada, listaOriginal->capacidade);
+    
+    for (int i = 0; i < listaOriginal->tamanho; i++)
+    {
+        inserirItem(listaClonada, listaOriginal->itens[i]);
+    }
+    
+    return listaClonada;
+}
+
+
 int buscaBinaria(LISTA *lista, int item)
 {
     int inicio = 0;

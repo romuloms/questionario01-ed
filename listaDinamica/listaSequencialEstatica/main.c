@@ -56,17 +56,30 @@ void testarBuscar(LISTA *l)
 
 }
 
+void testarClonar(LISTA *lOriginal, LISTA *lClonada)
+{
+    printf("=> Teste de Clonagem\n");
+    clonarLista(lOriginal, lClonada);
+    
+    imprimirStatus(lClonada);
+}
+
 /////////////////////////////////////////////////////
 
 int main(){
     LISTA l;
+    LISTA lista2;
         
     criarLista(&l, 5);
     testarInserir(&l);
     testarBuscar(&l);
     testarInserir(&l);
+    testarClonar(&l, &lista2);
     destruirLista(&l);
+    destruirLista(&lista2);
     imprimirStatus(&l);
+    imprimirStatus(&lista2);
+
         
     getchar();
     return 0;

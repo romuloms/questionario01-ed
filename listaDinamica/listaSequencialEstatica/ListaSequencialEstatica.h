@@ -41,6 +41,8 @@ bool inserirNaPosicao(LISTA *lista, int i, ITEM item);
 
 bool inserirItem(LISTA* lista, int valor);
 
+LISTA* clonarLista(LISTA* listaOriginal, LISTA* listaClonada);
+
 int buscaBinaria(LISTA *lista, int item);
 
 bool removerNaPos(LISTA* lista, int indice);
