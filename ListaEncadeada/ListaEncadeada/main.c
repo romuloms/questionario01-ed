@@ -194,12 +194,12 @@ int main(){
     
     inicializar(&l);
     testarInserir(&l);
-//    testarInserirNaPos(&l);
-//    testarInserirNoFinal(&l);
-//    testarBuscar(&l);
-//    testarAlterar(&l);
-//    testarRemover(&l);
-//    testarRemoverNaPos(&l);
+    testarInserirNaPos(&l);
+    testarInserirNoFinal(&l);
+    testarBuscar(&l);
+    testarAlterar(&l);
+    testarRemover(&l);
+    testarRemoverNaPos(&l);
     testarClonar(&l);
     destruir(&l);
     imprimirStatus(&l);
