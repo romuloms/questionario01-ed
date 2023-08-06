@@ -160,17 +160,18 @@ void intersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI)
     for (int i = 0; i < listaA->tamanho; i++)
     {
         NO* noListaA = noNaPosicao(i, listaA);
-        
+
         for (int j = 0; j < listaB->tamanho; j++)
         {
             NO* noListaB = noNaPosicao(j, listaB);
             char comparacao = compare(noListaA->item, noListaB->item);
-            
+
             if (comparacao == 0)
                 insercaoOrdenada(noListaA->item, listaI);
         }
     }
 }
+
 
 int buscar(ITEM item, LISTA *l)
 {
