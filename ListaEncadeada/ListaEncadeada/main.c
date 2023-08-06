@@ -178,6 +178,15 @@ void testarRemoverNaPos(LISTA *l)
     imprimirStatus(l);
 }
 
+
+void testarClonar(LISTA *l)
+{
+    printf("=> Teste da Clonagem\n");
+    LISTA* listaClonada = clonar(l);
+    
+    imprimirStatus(listaClonada);
+}
+
 /////////////////////////////////////////////////////
 
 int main(){
@@ -186,11 +195,12 @@ int main(){
     inicializar(&l);
     testarInserir(&l);
 //    testarInserirNaPos(&l);
-    testarInserirNoFinal(&l);
+//    testarInserirNoFinal(&l);
 //    testarBuscar(&l);
 //    testarAlterar(&l);
 //    testarRemover(&l);
-    testarRemoverNaPos(&l);
+//    testarRemoverNaPos(&l);
+    testarClonar(&l);
     destruir(&l);
     imprimirStatus(&l);
         

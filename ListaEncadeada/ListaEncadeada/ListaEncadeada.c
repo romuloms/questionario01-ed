@@ -238,6 +238,29 @@ void exibirItem(ITEM i)
 }
 
 
+LISTA* clonar(LISTA *l)
+{
+    LISTA* listaClonada = (LISTA *)malloc(sizeof(LISTA));
+    inicializar(listaClonada);
+    
+    NO* p = l->cabeca;
+    
+    if (l->cabeca == NULL)
+        return listaClonada;
+    
+    listaClonada->cabeca = criarNo(p->item, p->prox);
+    p = p->prox;
+    
+    while (p->prox)
+    {
+        p = criarNo(p->item, p->prox);
+        p = p->prox;
+    }
+    
+    return listaClonada;
+}
+
+
 void exibirLista(LISTA *l)
 {
     printf("[");
