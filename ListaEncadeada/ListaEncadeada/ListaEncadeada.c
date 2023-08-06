@@ -59,18 +59,48 @@ bool vazia(LISTA *l)
 }
 
 
-//bool insercaoOrdenada(ITEM item, LISTA *l)
-//{
-//    if (l->cabeca == NULL)
-//    {
-//        insercaoListaVazia(item, l);
-//        return true;
-//    }
-//
-//    NO* pAnterior = criar
-//
-//    return true;
-//}
+bool insercaoOrdenada(ITEM item, LISTA *l)
+{
+    if (l->cabeca == NULL)
+    {
+        insercaoListaVazia(item, l);
+        return true;
+    }
+
+    NO* pAtual = l->cabeca;
+    
+    // insercao no inicio da lista
+    if (compare(item, l->cabeca->item) == -1)
+    {
+        inserir(item, l);
+        return true;
+    }
+    // insercao no final da lista
+    if (compare(item, l->cauda->item) == 1)
+    {
+        inserirNoFinal(item, l);
+        return true;
+    }
+    // insercao no meio da lista
+    while (pAtual->prox)
+    {
+        int i = 1;
+        char comparativo = compare(pAtual->item, pAtual->prox->item);
+        
+        if (comparativo == -1)
+        {
+            inserirNaPos(item, i, l);
+            return true;
+        }
+        if (comparativo == 0)
+            return false;
+        
+        i++;
+        pAtual = pAtual->prox;
+    }
+
+    return true;
+}
 
 bool insercaoListaVazia(ITEM item, LISTA *l)
 {

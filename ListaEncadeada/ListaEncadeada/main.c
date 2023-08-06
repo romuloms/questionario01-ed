@@ -39,6 +39,24 @@ void testarInserir(LISTA *l)
     imprimirStatus(l);
 }
 
+void testarInsercaoOrdenada(LISTA *l)
+{
+    printf("=> Teste de Insercao Ordenada\n");
+    int qtd;
+    printf("Quantos itens deseja guardar na lista? ");
+    scanf("%d", &qtd);
+
+    ITEM item;
+    for (int i = 1; i <= qtd; i++)
+    {
+        printf("Digite o valor %d/%d: ", i, qtd);
+        scanf("%d", &item);
+        insercaoOrdenada(item, l);
+    }
+
+    imprimirStatus(l);
+}
+
 // Testa a insercao de valores no final da lista
 void testarInserirNoFinal(LISTA *l)
 {
@@ -193,14 +211,15 @@ int main(){
     LISTA l;
     
     inicializar(&l);
-    testarInserir(&l);
-    testarInserirNaPos(&l);
-    testarInserirNoFinal(&l);
-    testarBuscar(&l);
-    testarAlterar(&l);
-    testarRemover(&l);
-    testarRemoverNaPos(&l);
-    testarClonar(&l);
+    testarInsercaoOrdenada(&l);
+//    testarInserir(&l);
+//    testarInserirNaPos(&l);
+//    testarInserirNoFinal(&l);
+//    testarBuscar(&l);
+//    testarAlterar(&l);
+//    testarRemover(&l);
+//    testarRemoverNaPos(&l);
+//    testarClonar(&l);
     destruir(&l);
     imprimirStatus(&l);
         

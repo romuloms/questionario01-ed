@@ -60,6 +60,8 @@ bool inserirNoFinal(ITEM item, LISTA *l);
 
 bool insercaoListaVazia(ITEM item, LISTA *l);
 
+bool insercaoOrdenada(ITEM item, LISTA *l);
+
 /*
   Objetivo: Busca na lista o item passado.
             Caso encontre, retorna a posicao (entre 0 e tamanho - 1).
