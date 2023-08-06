@@ -205,13 +205,26 @@ void testarClonar(LISTA *l)
     imprimirStatus(listaClonada);
 }
 
+
+void testarIntersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI)
+{
+    printf("=> Teste de intersecao\n");
+    intersecao(listaA, listaB, listaI);
+    
+    imprimirStatus(listaI);
+}
+
 /////////////////////////////////////////////////////
 
 int main(){
-    LISTA l;
+    LISTA l1, l2, l3;
     
-    inicializar(&l);
-    testarInsercaoOrdenada(&l);
+    inicializar(&l1);
+    inicializar(&l2);
+    inicializar(&l3);
+    testarInsercaoOrdenada(&l1);
+    testarInsercaoOrdenada(&l2);
+    testarIntersecao(&l1, &l2, &l3);
 //    testarInserir(&l);
 //    testarInserirNaPos(&l);
 //    testarInserirNoFinal(&l);
@@ -220,8 +233,10 @@ int main(){
 //    testarRemover(&l);
 //    testarRemoverNaPos(&l);
 //    testarClonar(&l);
-    destruir(&l);
-    imprimirStatus(&l);
+    destruir(&l1);
+    destruir(&l2);
+    destruir(&l3);
+//    imprimirStatus(&l3);
         
     getchar();
     return 0;
