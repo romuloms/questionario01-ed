@@ -243,20 +243,22 @@ LISTA* clonar(LISTA *l)
     LISTA* listaClonada = (LISTA *)malloc(sizeof(LISTA));
     inicializar(listaClonada);
     
-    NO* p = l->cabeca;
+    NO* ponteiroAux = l->cabeca;
     
     if (l->cabeca == NULL)
         return listaClonada;
     
-    listaClonada->cabeca = criarNo(p->item, p->prox);
-    p = p->prox;
+    listaClonada->cabeca = criarNo(ponteiroAux->item, ponteiroAux->prox);
+    listaClonada->tamanho++;
+    ponteiroAux = ponteiroAux->prox;
     
-    while (p->prox)
+    while (ponteiroAux->prox)
     {
-        p = criarNo(p->item, p->prox);
-        p = p->prox;
+        ponteiroAux = criarNo(ponteiroAux->item, ponteiroAux->prox);
+        listaClonada->tamanho++;
+        ponteiroAux = ponteiroAux->prox;
     }
-    
+    listaClonada->tamanho++;
     return listaClonada;
 }
 
