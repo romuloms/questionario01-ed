@@ -97,13 +97,15 @@ void testarDesempilhar(PILHA *p)
     }
 }
 
+
+
 /////////////////////////////////////////////////////
 
 int main(){
     PILHA p;
     
     inicializar(&p);
-    
+
     testarEmpilhar(&p);
     testarEnesimo(&p);
     testarDesempilhar(&p);
