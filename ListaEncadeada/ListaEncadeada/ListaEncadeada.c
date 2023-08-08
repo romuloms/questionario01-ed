@@ -240,21 +240,41 @@ bool inserirNaPos(ITEM item, int i, LISTA *l)
 bool removerNaPos(ITEM *elem, int i, LISTA *l)
 {
     if (i < 0 || i >= tamanho(l))
-    {
-        printf("Posicao de remocao invalida (%d)\n", i);
-        exit(EXIT_FAILURE);
-    }
+        return false;
     
-    if (noNaPosicao(i, l) == NULL)
-    {
-        printf("Posicao de remocao invalida (%d)\n", i);
-        exit(EXIT_FAILURE);
-    }
+    if (vazia(l))
+        return false;
     
-    NO* pAtual = noNaPosicao(i, l);
-    *elem = (pAtual->item);
-    remover(pAtual->item, l);
-    return true;
+    else
+    {
+        NO* pAnterior = l->cabeca;
+        
+        if (i == 0)
+        {
+            l->cabeca = l->cabeca->prox;
+            l->tamanho--;
+            free(pAnterior);
+            return true;
+        }
+        else
+        {
+            NO* pAtual = pAnterior->prox;
+            
+            for (int j = 1; j < i; j++)
+            {
+                pAnterior = pAtual;
+                pAtual = pAtual->prox;
+            }
+            *elem = pAtual->item;
+            pAnterior->prox = pAtual->prox;
+            l->tamanho--;
+            free(pAtual);
+            return true;
+        }
+    }
+//    NO* pAtual = noNaPosicao(i, l);
+//    *elem = pAtual->item;
+//    remover(pAtual->item, l);
 }
 
 
