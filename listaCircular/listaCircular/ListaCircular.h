@@ -57,6 +57,8 @@ bool vazia(LISTA *l);
 */
 bool inserir(ITEM item, LISTA *l);
 
+LISTA* clonar(LISTA *l);
+
 /*
   Objetivo: Busca na lista o item passado.
             Caso encontre, retorna a posicao (entre 0 e tamanho - 1).

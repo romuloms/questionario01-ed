@@ -46,6 +46,28 @@ NO* criarNo(ITEM item, NO *prox)
 }
 
 
+LISTA* clonar(LISTA *l)
+{
+    LISTA* listaClonada = (LISTA *) malloc(sizeof(LISTA)*l->tamanho);
+    inicializar(listaClonada);
+
+    NO* auxL = l->cabeca->prox;
+    NO* auxClonada = listaClonada->cabeca;
+    NO* novoNo = NULL;
+    
+    while (auxL != l->cabeca)
+    {
+        novoNo = criarNo(auxL->item, listaClonada->cabeca);
+        auxClonada->prox = novoNo;
+        listaClonada->tamanho++;
+        auxL = auxL->prox;
+        auxClonada = auxClonada->prox;
+    }
+    
+    return listaClonada;
+}
+
+
 int tamanho(LISTA *l)
 {
     return l->tamanho;

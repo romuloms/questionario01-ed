@@ -120,6 +120,14 @@ void testarAlterar(LISTA *l)
     }
 }
 
+
+void testarClonar(LISTA *l)
+{
+    printf("=> Teste da Clonagem\n");
+    LISTA* listaClonada = clonar(l);
+    imprimirStatus(listaClonada);
+}
+
 /////////////////////////////////////////////////////
 
 int main(){
@@ -127,9 +135,10 @@ int main(){
     
     inicializar(&l);
     testarInserir(&l);
-    testarInserirNaPos(&l);
-    testarBuscar(&l);
-    testarAlterar(&l);
+//    testarInserirNaPos(&l);
+//    testarBuscar(&l);
+//    testarAlterar(&l);
+    testarClonar(&l);
     limpar(&l);
     imprimirStatus(&l);
     destruir(&l);
