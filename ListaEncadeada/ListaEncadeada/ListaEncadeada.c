@@ -155,20 +155,22 @@ NO* noNaPosicao(int n, LISTA *l)
 }
 
 
+// calcula a intersecao entre duas listas
 void intersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI)
 {
+    NO* cabecaA = listaA->cabeca;
+    NO* cabecaB = listaB->cabeca;
+    
     for (int i = 0; i < listaA->tamanho; i++)
     {
-        NO* noListaA = noNaPosicao(i, listaA);
-
+        cabecaB = listaB->cabeca;
         for (int j = 0; j < listaB->tamanho; j++)
         {
-            NO* noListaB = noNaPosicao(j, listaB);
-            char comparacao = compare(noListaA->item, noListaB->item);
-
-            if (comparacao == 0)
-                insercaoOrdenada(noListaA->item, listaI);
+            if (cabecaA->item == cabecaB->item)
+                inserirNoFinal(cabecaA->item, listaI);
+            cabecaB = cabecaB->prox;
         }
+        cabecaA = cabecaA->prox;
     }
 }
 
