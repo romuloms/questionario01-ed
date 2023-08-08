@@ -1,8 +1,8 @@
 //
 //  main.c
-//  ListaEncadeada
+//  listaCircular
 //
-//  Created by Rômulo Santana on 05/08/23.
+//  Created by Rômulo Santana on 08/08/23.
 //
 
 #include <stdio.h>
@@ -10,7 +10,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include "ListaEncadeada.h"
+#include "ListaCircular.h"
 
 // Imprime na tela o status da lista
 void imprimirStatus(LISTA *l)
@@ -29,48 +29,11 @@ void testarInserir(LISTA *l)
     scanf("%d", &qtd);
 
     ITEM item;
-    for (int i = 1; i <= qtd; i++)
+    for (int i = 0; i < qtd; i++)
     {
-        printf("Digite o valor %d/%d: ", i, qtd);
+        printf("Digite o valor para a posicao [%d]: ", i);
         scanf("%d", &item);
         inserir(item, l);
-    }
-
-    imprimirStatus(l);
-}
-
-void testarInsercaoOrdenada(LISTA *l)
-{
-    printf("=> Teste de Insercao Ordenada\n");
-    int qtd;
-    printf("Quantos itens deseja guardar na lista? ");
-    scanf("%d", &qtd);
-
-    ITEM item;
-    for (int i = 1; i <= qtd; i++)
-    {
-        printf("Digite o valor %d/%d: ", i, qtd);
-        scanf("%d", &item);
-        insercaoOrdenada(item, l);
-    }
-
-    imprimirStatus(l);
-}
-
-// Testa a insercao de valores no final da lista
-void testarInserirNoFinal(LISTA *l)
-{
-    printf("=> Teste de Inserir no final\n");
-    int qtd;
-    printf("Quantos itens deseja guardar no final da lista? ");
-    scanf("%d", &qtd);
-
-    ITEM item;
-    for (int i = 1; i <= qtd; i++)
-    {
-        printf("Digite o valor %d/%d: ", i, qtd);
-        scanf("%d", &item);
-        inserirNoFinal(item, l);
     }
 
     imprimirStatus(l);
@@ -105,7 +68,7 @@ void testarInserirNaPos(LISTA *l)
 // Testa a busca de valores na lista
 void testarBuscar(LISTA *l)
 {
-   // Testa a busca por um valor existente
+   // Testa a busca por uma chave existente
     printf("=> Teste de Busca\n");
     printf("Digite o valor que deseja buscar: ");
     ITEM item;
@@ -116,7 +79,7 @@ void testarBuscar(LISTA *l)
     else
         printf("Nao achou o item na lista\n");
 
-    // Testa a busca por uma posicao existente
+    // Testa a busca por uma chave existente
     printf("Digite a posicao que deseja acessar (ou -1 para sair): ");
     int p;
     scanf("%d", &p);
@@ -157,87 +120,20 @@ void testarAlterar(LISTA *l)
     }
 }
 
-
-void testarRemover(LISTA *l)
-{
-    printf("=> Teste da Remocao\n");
-    int i;
-    printf("Digite o item que deseja remover (ou -1 para sair): ");
-    scanf("%d", &i);
-    while (i != -1)
-    {
-        if (remover(i, l))
-           printf("Removeu com sucesso\n");
-        else
-           printf("Erro na remocao\n");
-
-        imprimirStatus(l);
-
-        // Leitura do proximo item a ser removido
-        printf("Digite o item que deseja remover (ou -1 para sair): ");
-        scanf("%d", &i);
-    }
-}
-
-
-void testarRemoverNaPos(LISTA *l)
-{
-    printf("=> Teste da Remocao na posicao\n");
-    int p;
-    int item;
-    printf("Digite a posicao que deseja remover (ou -1 para sair): ");
-    scanf("%d", &p);
-    
-    if (removerNaPos(&item, p, l))
-       printf("Removeu com sucesso o elemento %d\n", item);
-    else
-       printf("Erro na remocao\n");
-
-    imprimirStatus(l);
-}
-
-
-void testarClonar(LISTA *l)
-{
-    printf("=> Teste da Clonagem\n");
-    LISTA* listaClonada = clonar(l);
-    
-    imprimirStatus(listaClonada);
-}
-
-
-void testarIntersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI)
-{
-    printf("=> Teste de intersecao\n");
-    intersecao(listaA, listaB, listaI);
-    
-    imprimirStatus(listaI);
-}
-
 /////////////////////////////////////////////////////
 
 int main(){
-    LISTA l, l2, l3;
+    LISTA l;
     
     inicializar(&l);
-    inicializar(&l2);
-    inicializar(&l3);
-    testarInsercaoOrdenada(&l);
-    testarInsercaoOrdenada(&l2);
-    testarIntersecao(&l, &l2, &l3);
     testarInserir(&l);
     testarInserirNaPos(&l);
-    testarInserirNoFinal(&l);
     testarBuscar(&l);
     testarAlterar(&l);
-    testarRemover(&l);
-    testarRemoverNaPos(&l);
-    testarClonar(&l);
+    limpar(&l);
+    imprimirStatus(&l);
     destruir(&l);
-    destruir(&l);
-    destruir(&l);
-    imprimirStatus(&l3);
-        
+    
     getchar();
     return 0;
 }
