@@ -66,9 +66,8 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         insercaoListaVazia(item, l);
         return true;
     }
-
-    NO* pAtual = l->cabeca;
-    
+    NO* pAnterior = l->cabeca;
+    NO* pAtual = pAnterior->prox;
     // insercao no inicio da lista
     if (compare(item, l->cabeca->item) == -1)
     {
@@ -82,24 +81,17 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         return true;
     }
     // insercao no meio da lista
-    while (pAtual->prox)
+    else
     {
-        int i = 1;
-        char comparativo = compare(pAtual->item, pAtual->prox->item);
-        
-        if (comparativo == -1)
+        while (pAtual->item < item)
         {
-            inserirNaPos(item, i, l);
-            return true;
+            pAnterior = pAtual;
+            pAtual = pAtual->prox;
         }
-        if (comparativo == 0)
-            return false;
-        
-        i++;
-        pAtual = pAtual->prox;
+        NO* pNovo = criarNo(item, pAtual);
+        pAnterior->prox = pNovo;
+        return true;
     }
-
-    return true;
 }
 
 bool insercaoListaVazia(ITEM item, LISTA *l)
@@ -251,6 +243,7 @@ bool removerNaPos(ITEM *elem, int i, LISTA *l)
         
         if (i == 0)
         {
+            *elem = l->cabeca->item;
             l->cabeca = l->cabeca->prox;
             l->tamanho--;
             free(pAnterior);
@@ -272,9 +265,6 @@ bool removerNaPos(ITEM *elem, int i, LISTA *l)
             return true;
         }
     }
-//    NO* pAtual = noNaPosicao(i, l);
-//    *elem = pAtual->item;
-//    remover(pAtual->item, l);
 }
 
 

@@ -228,10 +228,10 @@ int main(){
 //    testarInserir(&l);
 //    testarInserirNaPos(&l);
 //    testarInserirNoFinal(&l);
-    testarBuscar(&l);
+//    testarBuscar(&l);
 //    testarAlterar(&l);
 //    testarRemover(&l);
-    testarRemoverNaPos(&l);
+//    testarRemoverNaPos(&l);
 //    testarClonar(&l);
     destruir(&l);
     destruir(&l);
