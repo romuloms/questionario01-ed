@@ -319,13 +319,16 @@ LISTA* clonar(LISTA *l)
     listaClonada->tamanho++;
     ponteiroAux = ponteiroAux->prox;
     
-    while (ponteiroAux->prox)
+    if (ponteiroAux)
     {
-        ponteiroAux = criarNo(ponteiroAux->item, ponteiroAux->prox);
+        while (ponteiroAux->prox)
+        {
+            ponteiroAux = criarNo(ponteiroAux->item, ponteiroAux->prox);
+            listaClonada->tamanho++;
+            ponteiroAux = ponteiroAux->prox;
+        }
         listaClonada->tamanho++;
-        ponteiroAux = ponteiroAux->prox;
     }
-    listaClonada->tamanho++;
     return listaClonada;
 }
 

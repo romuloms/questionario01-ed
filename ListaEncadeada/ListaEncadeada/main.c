@@ -217,14 +217,14 @@ void testarIntersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI)
 /////////////////////////////////////////////////////
 
 int main(){
-    LISTA l1, l2, l3;
+    LISTA l;
     
-    inicializar(&l1);
-    inicializar(&l2);
-    inicializar(&l3);
-    testarInsercaoOrdenada(&l1);
-    testarInsercaoOrdenada(&l2);
-    testarIntersecao(&l1, &l2, &l3);
+    inicializar(&l);
+//    inicializar(&l2);
+//    inicializar(&l3);
+    testarInsercaoOrdenada(&l);
+//    testarInsercaoOrdenada(&l2);
+//    testarIntersecao(&l1, &l2, &l3);
 //    testarInserir(&l);
 //    testarInserirNaPos(&l);
 //    testarInserirNoFinal(&l);
@@ -232,10 +232,10 @@ int main(){
 //    testarAlterar(&l);
 //    testarRemover(&l);
 //    testarRemoverNaPos(&l);
-//    testarClonar(&l);
-    destruir(&l1);
-    destruir(&l2);
-    destruir(&l3);
+    testarClonar(&l);
+    destruir(&l);
+    destruir(&l);
+    destruir(&l);
 //    imprimirStatus(&l3);
         
     getchar();
