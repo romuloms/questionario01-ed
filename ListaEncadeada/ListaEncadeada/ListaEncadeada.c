@@ -234,9 +234,6 @@ bool removerNaPos(ITEM *elem, int i, LISTA *l)
     if (i < 0 || i >= tamanho(l))
         return false;
     
-    if (vazia(l))
-        return false;
-    
     else
     {
         NO* pAnterior = l->cabeca;
