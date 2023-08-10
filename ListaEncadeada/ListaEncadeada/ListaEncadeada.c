@@ -59,40 +59,84 @@ bool vazia(LISTA *l)
 }
 
 
+//bool insercaoOrdenada(ITEM item, LISTA *l)
+//{
+//    if (l->cabeca == NULL)
+//    {
+//        insercaoListaVazia(item, l);
+//        return true;
+//    }
+//    NO* pAnterior = l->cabeca;
+//    NO* pAtual = pAnterior->prox;
+//    // insercao no inicio da lista
+//    if (compare(item, l->cabeca->item) == -1)
+//    {
+//        inserir(item, l);
+//        return true;
+//    }
+//    // insercao no final da lista
+//    if (compare(item, l->cauda->item) == 1)
+//    {
+//        inserirNoFinal(item, l);
+//        return true;
+//    }
+//    // insercao no meio da lista
+//    else
+//    {
+//        while (pAtual->item < item)
+//        {
+//            pAnterior = pAtual;
+//            pAtual = pAtual->prox;
+//        }
+//        NO* pNovo = criarNo(item, pAtual);
+//        l->tamanho++;
+//        pAnterior->prox = pNovo;
+//        return true;
+//    }
+//}
+
+
 bool insercaoOrdenada(ITEM item, LISTA *l)
 {
-    if (l->cabeca == NULL)
+    if (l->tamanho == 0)
     {
-        insercaoListaVazia(item, l);
+        l->cabeca = criarNo(item, NULL);
+        l->tamanho++;
+        l->cauda = l->cabeca;
         return true;
     }
-    NO* pAnterior = l->cabeca;
-    NO* pAtual = pAnterior->prox;
-    // insercao no inicio da lista
-    if (compare(item, l->cabeca->item) == -1)
+    if (l->cabeca->item > item)
     {
-        inserir(item, l);
+        NO *p = criarNo(item, l->cabeca);
+        l->cabeca = p;
+        l->tamanho++;
         return true;
     }
-    // insercao no final da lista
-    if (compare(item, l->cauda->item) == 1)
+    if (l->cauda->item < item)
     {
-        inserirNoFinal(item, l);
+        NO *p = criarNo(item, NULL);
+        l->cauda->prox = p;
+        l->cauda = p;
+        l->tamanho++;
         return true;
     }
-    // insercao no meio da lista
     else
     {
-        while (pAtual->item < item)
+        NO *pAnterior = l->cabeca;
+        NO *pAtual = l->cabeca->prox;
+
+        for (int j = 1; item > pAtual->item; j++)
         {
             pAnterior = pAtual;
             pAtual = pAtual->prox;
         }
-        NO* pNovo = criarNo(item, pAtual);
-        pAnterior->prox = pNovo;
+        NO *p = criarNo(item, pAtual);
+        pAnterior->prox = p;
+        l->tamanho++;
         return true;
     }
 }
+
 
 bool insercaoListaVazia(ITEM item, LISTA *l)
 {
