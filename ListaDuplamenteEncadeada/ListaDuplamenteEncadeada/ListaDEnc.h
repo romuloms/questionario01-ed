@@ -39,6 +39,8 @@ void inicializar(LISTA *l);
 // Retornar o tamanho da lista sequencial
 int tamanho(LISTA *l);
 
+bool insercaoOrdenada(ITEM item, LISTA *l);
+
 // Retorna true se a lista esta cheia (Tamanho = MAX)
 bool cheia(LISTA *l);
 

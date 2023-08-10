@@ -102,6 +102,50 @@ bool inserir(ITEM item, LISTA *l)
 }
 
 
+bool insercaoOrdenada(ITEM item, LISTA *l)
+{
+    if (l->tamanho == 0)
+    {
+        l->cabeca = criarNo(item, NULL, NULL);
+        l->tamanho++;
+        l->cauda = l->cabeca;
+        return true;
+    }
+    if (l->cabeca->item > item)
+    {
+        NO *p = criarNo(item, NULL, l->cabeca);
+        l->cabeca->ant = p;
+        l->cabeca = p;
+        l->tamanho++;
+        return true;
+    }
+    if (l->cauda->item < item)
+    {
+        NO *p = criarNo(item, NULL, l->cauda);
+        l->cauda->prox = p;
+        l->cauda = p;
+        l->tamanho++;
+        return true;
+    }
+    else
+    {
+        NO *pAnterior = l->cabeca;
+        NO *pAtual = l->cabeca->prox;
+
+        for (int j = 1; item > pAtual->item; j++)
+        {
+            pAnterior = pAtual;
+            pAtual = pAtual->prox;
+        }
+        NO *p = criarNo(item, pAnterior, pAtual);
+        pAnterior->prox = p;
+        pAtual->ant = p;
+        l->tamanho++;
+        return true;
+    }
+}
+
+
 int buscar(ITEM item, LISTA *l)
 {
     NO* p = l->cabeca;
