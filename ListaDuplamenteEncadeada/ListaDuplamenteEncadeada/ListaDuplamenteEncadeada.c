@@ -149,7 +149,6 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         
         return true;
     }
-    return true;
 }
 
 
