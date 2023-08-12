@@ -138,10 +138,15 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
             pAnterior = pAtual;
             pAtual = pAtual->prox;
         }
+        
+        if (pAtual->item == item)
+            return false;
+        
         NO *p = criarNo(item, pAnterior, pAtual);
         pAnterior->prox = p;
         pAtual->ant = p;
         l->tamanho++;
+        
         return true;
     }
     return true;
