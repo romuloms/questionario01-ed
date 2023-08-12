@@ -106,9 +106,10 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
 {
     if (l->tamanho == 0)
     {
-        l->cabeca = criarNo(item, NULL, NULL);
+        NO *p = criarNo(item, NULL, NULL);
         l->tamanho++;
-        l->cauda = l->cabeca;
+        l->cabeca = p;
+        l->cauda = p;
         return true;
     }
     if (l->cabeca->item > item)
@@ -121,7 +122,7 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
     }
     if (l->cauda->item < item)
     {
-        NO *p = criarNo(item, NULL, l->cauda);
+        NO *p = criarNo(item, l->cauda, NULL);
         l->cauda->prox = p;
         l->cauda = p;
         l->tamanho++;
@@ -143,6 +144,7 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         l->tamanho++;
         return true;
     }
+    return true;
 }
 
 
