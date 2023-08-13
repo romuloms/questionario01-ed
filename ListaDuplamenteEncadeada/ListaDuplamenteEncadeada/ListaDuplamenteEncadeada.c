@@ -152,6 +152,24 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
 }
 
 
+void inverter(LISTA *l)
+{
+    LISTA* listaInvertida = (LISTA*)malloc(sizeof(LISTA)*l->tamanho);
+    NO *pCauda = l->cauda;
+    
+    NO *cabecaNova = criarNo(l->cauda->item, NULL, l->cauda->ant);
+    listaInvertida->cabeca = cabecaNova;
+    
+    while (pCauda->ant)
+    {
+        cabecaNova->prox = criarNo(pCauda->ant->item, cabecaNova, pCauda->prox);
+        pCauda = pCauda->ant;
+    }
+    
+    l->cabeca = cabecaNova;
+}
+
+
 int buscar(ITEM item, LISTA *l)
 {
     NO* p = l->cabeca;

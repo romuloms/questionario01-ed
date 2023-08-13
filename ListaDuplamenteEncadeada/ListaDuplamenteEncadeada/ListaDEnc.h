@@ -54,6 +54,8 @@ bool vazia(LISTA *l);
 */
 NO* noNaPosicao(int n, LISTA *l);
 
+void inverter(LISTA *l);
+
 // Retorna o enderere do NO que contem o item.
 // Caso nao encontre, retorna NULL
 NO* buscarNO(ITEM item, LISTA *l);

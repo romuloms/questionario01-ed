@@ -143,6 +143,8 @@ int main(){
 //    testarBuscar(&l);
 //    testarAlterar(&l);
     testarInsercaoOrdenada(&l);
+    inverter(&l);
+    imprimirStatus(&l);
     limpar(&l);
     imprimirStatus(&l);
     destruir(&l);
