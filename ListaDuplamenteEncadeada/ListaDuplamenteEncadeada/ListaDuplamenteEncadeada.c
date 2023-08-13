@@ -154,19 +154,20 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
 
 void inverter(LISTA *l)
 {
-    LISTA* listaInvertida = (LISTA*)malloc(sizeof(LISTA)*l->tamanho);
-    NO *pCauda = l->cauda;
+    NO *pAtual = l->cabeca;
+    NO *aux = NULL;
+    l->cauda = l->cabeca;
     
-    NO *cabecaNova = criarNo(l->cauda->item, NULL, l->cauda->ant);
-    listaInvertida->cabeca = cabecaNova;
-    
-    while (pCauda->ant)
-    {
-        cabecaNova->prox = criarNo(pCauda->ant->item, cabecaNova, pCauda->prox);
-        pCauda = pCauda->ant;
+    while (pAtual) {
+        aux = pAtual->ant;  // salva o valor anterior do pAtual
+        pAtual->ant = pAtual->prox; // troca o anterior do pAtual para ser o proximo
+        pAtual->prox = aux; // troca o proximo do pAtual para ser o anterior salvo em aux
+                            // ja que o valor em pAtual->ant foi trocado
+        pAtual = pAtual->ant;   // avanca para o proximo no porque, depois da troca, o
+                                // novo anterior eh o antigo proximo
     }
-    
-    l->cabeca = cabecaNova;
+    if (aux != NULL)
+        l->cabeca = aux->ant;
 }
 
 

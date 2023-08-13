@@ -138,11 +138,11 @@ int main(){
     LISTA l;
     
     inicializar(&l);
-//    testarInserir(&l);
+    testarInserir(&l);
 //    testarInserirNaPos(&l);
 //    testarBuscar(&l);
 //    testarAlterar(&l);
-    testarInsercaoOrdenada(&l);
+//    testarInsercaoOrdenada(&l);
     inverter(&l);
     imprimirStatus(&l);
     limpar(&l);
