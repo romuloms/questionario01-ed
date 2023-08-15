@@ -128,12 +128,14 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         l->tamanho++;
         return true;
     }
+    if ((l->cabeca->item == item) || (l->cauda->item == item))
+        return false;
     else
     {
         NO *pAnterior = l->cabeca;
         NO *pAtual = l->cabeca->prox;
 
-        for (int j = 1; item > pAtual->item; j++)
+        while (item > pAtual->item)
         {
             pAnterior = pAtual;
             pAtual = pAtual->prox;
