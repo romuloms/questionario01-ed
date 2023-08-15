@@ -220,13 +220,13 @@ int main(){
     LISTA l;
     
     inicializar(&l);
-//    testarInsercaoOrdenada(&l);
-    testarInserir(&l);
+    testarInsercaoOrdenada(&l);
+//    testarInserir(&l);
     inverter(&l);
     imprimirStatus(&l);
 //    testarInserirNaPos(&l);
 //    testarInserirNoFinal(&l);
-    testarBuscar(&l);
+//    testarBuscar(&l);
 //    testarAlterar(&l);
 //    testarRemover(&l);
 //    testarRemoverNaPos(&l);
