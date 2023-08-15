@@ -63,6 +63,9 @@ bool insercaoListaVazia(ITEM item, LISTA *l);
 bool insercaoOrdenada(ITEM item, LISTA *l);
 
 void intersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI);
+
+void inverter(LISTA *l);
+
 /*
   Objetivo: Busca na lista o item passado.
             Caso encontre, retorna a posicao (entre 0 e tamanho - 1).

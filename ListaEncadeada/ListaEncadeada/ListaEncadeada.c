@@ -146,6 +146,7 @@ bool insercaoListaVazia(ITEM item, LISTA *l)
     return true;
 }
 
+
 bool inserir(ITEM item, LISTA *l)
 {
     if (l->cabeca == NULL)
@@ -171,6 +172,26 @@ bool inserirNoFinal(ITEM item, LISTA *l)
     l->cauda = pNovo;
     l->tamanho++;
     return true;
+}
+
+
+void inverter(LISTA *l)
+{
+    NO* pAtual = l->cabeca;
+    NO* pAnt = NULL;
+    NO* pAux = NULL;
+    l->cauda = l->cabeca;
+    
+    while (pAtual)
+    {
+        pAux = pAtual->prox;
+        pAtual->prox = pAnt;
+        pAnt = pAtual;
+        pAtual = pAux;
+    }
+    
+    if (pAnt)
+        l->cabeca = pAnt;
 }
 
 
