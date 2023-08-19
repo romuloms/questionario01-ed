@@ -150,6 +150,13 @@ void testarInsercaoOrdenada(LISTA *l)
     imprimirStatus(l);
 }
 
+void testarInverter(LISTA *l)
+{
+    printf("=> Teste de Inverter\n");
+    inverter(l);
+    imprimirStatus(l);
+}
+
 /////////////////////////////////////////////////////
 
 int main(){
@@ -162,8 +169,7 @@ int main(){
 //    testarAlterar(&l);
 //    testarInsercaoOrdenada(&l);
     testarInserirNoFinal(&l);
-    inverter(&l);
-    imprimirStatus(&l);
+    testarInverter(&l);
     limpar(&l);
     imprimirStatus(&l);
     destruir(&l);
