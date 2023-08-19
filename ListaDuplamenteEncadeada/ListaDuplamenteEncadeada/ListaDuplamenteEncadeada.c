@@ -102,6 +102,23 @@ bool inserir(ITEM item, LISTA *l)
 }
 
 
+bool inserirNoFinal(ITEM item, LISTA *l)
+{
+    NO* pNovo = criarNo(item, l->cauda, NULL);
+    l->tamanho++;
+    
+    if (l->cauda)
+        l->cauda->prox = pNovo;
+    
+    l->cauda = pNovo;
+    
+    if (l->cabeca == NULL)
+        l->cabeca = pNovo;
+    
+    return true;
+}
+
+
 bool insercaoOrdenada(ITEM item, LISTA *l)
 {
     if (l->tamanho == 0)
