@@ -280,7 +280,7 @@ bool removerNaPos(ITEM *elem, int i, LISTA *l)
         }
         else
         {
-            NO* pAtual = pAnterior->prox;
+            NO* pAtual = l->cabeca->prox;
             
             for (int j = 1; j < i; j++)
             {

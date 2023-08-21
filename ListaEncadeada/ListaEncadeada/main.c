@@ -185,7 +185,7 @@ void testarRemoverNaPos(LISTA *l)
     printf("=> Teste da Remocao na posicao\n");
     int p;
     int item;
-    printf("Digite a posicao que deseja remover (ou -1 para sair): ");
+    printf("Digite a posicao que deseja remover: ");
     scanf("%d", &p);
     
     if (removerNaPos(&item, p, l))
@@ -222,14 +222,14 @@ int main(void){
     inicializar(&l);
     testarInsercaoOrdenada(&l);
 //    testarInserir(&l);
-    inverter(&l);
-    imprimirStatus(&l);
+//    inverter(&l);
+//    imprimirStatus(&l);
 //    testarInserirNaPos(&l);
 //    testarInserirNoFinal(&l);
 //    testarBuscar(&l);
 //    testarAlterar(&l);
 //    testarRemover(&l);
-//    testarRemoverNaPos(&l);
+    testarRemoverNaPos(&l);
 //    testarClonar(&l);
     destruir(&l);
         
