@@ -59,41 +59,13 @@ bool vazia(LISTA *l)
 }
 
 
-//bool insercaoOrdenada(ITEM item, LISTA *l)
-//{
-//    if (l->cabeca == NULL)
-//    {
-//        insercaoListaVazia(item, l);
-//        return true;
-//    }
-//    NO* pAnterior = l->cabeca;
-//    NO* pAtual = pAnterior->prox;
-//    // insercao no inicio da lista
-//    if (compare(item, l->cabeca->item) == -1)
-//    {
-//        inserir(item, l);
-//        return true;
-//    }
-//    // insercao no final da lista
-//    if (compare(item, l->cauda->item) == 1)
-//    {
-//        inserirNoFinal(item, l);
-//        return true;
-//    }
-//    // insercao no meio da lista
-//    else
-//    {
-//        while (pAtual->item < item)
-//        {
-//            pAnterior = pAtual;
-//            pAtual = pAtual->prox;
-//        }
-//        NO* pNovo = criarNo(item, pAtual);
-//        l->tamanho++;
-//        pAnterior->prox = pNovo;
-//        return true;
-//    }
-//}
+bool insercaoListaVazia(ITEM item, LISTA *l)
+{
+    l->cabeca = criarNo(item, NULL);
+    l->cauda = l->cabeca;
+    l->tamanho++;
+    return true;
+}
 
 
 bool insercaoOrdenada(ITEM item, LISTA *l)
@@ -141,15 +113,6 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         l->tamanho++;
         return true;
     }
-}
-
-
-bool insercaoListaVazia(ITEM item, LISTA *l)
-{
-    l->cabeca = criarNo(item, l->cabeca);
-    l->cauda = l->cabeca;
-    l->tamanho++;
-    return true;
 }
 
 
