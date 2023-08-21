@@ -39,8 +39,10 @@ void inicializar(LISTA *l);
 // Retornar o tamanho da lista sequencial
 int tamanho(LISTA *l);
 
+// Inserir itens mantendo a ordem crescente na lista
 bool insercaoOrdenada(ITEM item, LISTA *l);
 
+// Inserir itens na cauda da lista
 bool inserirNoFinal(ITEM item, LISTA *l);
 
 // Retorna true se a lista esta cheia (Tamanho = MAX)
@@ -56,6 +58,8 @@ bool vazia(LISTA *l);
 */
 NO* noNaPosicao(int n, LISTA *l);
 
+// Inverter a ordem dos elementos da lista (o ultimo torna-se o primeiro
+// e assim em diante)
 void inverter(LISTA *l);
 
 // Retorna o enderere do NO que contem o item.

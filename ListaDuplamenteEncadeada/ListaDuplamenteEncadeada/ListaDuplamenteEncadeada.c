@@ -104,14 +104,15 @@ bool inserir(ITEM item, LISTA *l)
 
 bool inserirNoFinal(ITEM item, LISTA *l)
 {
+    // cria o novo no na cauda da lista, com o ponteiro proximo sendo NULL
     NO* pNovo = criarNo(item, l->cauda, NULL);
     l->tamanho++;
-    
+    // se havia cauda, atualiza o proximo dela para o novo no criado
     if (l->cauda)
         l->cauda->prox = pNovo;
-    
+    // atualiza a cauda
     l->cauda = pNovo;
-    
+    // se a lista era vazia, a cabeca tambem sera a cauda
     if (l->cabeca == NULL)
         l->cabeca = pNovo;
     
@@ -121,6 +122,7 @@ bool inserirNoFinal(ITEM item, LISTA *l)
 
 bool insercaoOrdenada(ITEM item, LISTA *l)
 {
+    // insercao na lista vazia
     if (l->tamanho == 0)
     {
         NO *p = criarNo(item, NULL, NULL);
@@ -129,6 +131,7 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         l->cauda = p;
         return true;
     }
+    // insercao na cabeca
     if (l->cabeca->item > item)
     {
         NO *p = criarNo(item, NULL, l->cabeca);
@@ -137,6 +140,7 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         l->tamanho++;
         return true;
     }
+    // insercao na cauda
     if (l->cauda->item < item)
     {
         NO *p = criarNo(item, l->cauda, NULL);
@@ -145,6 +149,7 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         l->tamanho++;
         return true;
     }
+    // previne insercao de itens iguais na cabeca ou na cauda
     if ((l->cabeca->item == item) || (l->cauda->item == item))
         return false;
     else
@@ -152,12 +157,13 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         NO *pAnterior = l->cabeca;
         NO *pAtual = l->cabeca->prox;
 
+        // encontra o valor que e maior que o item
         while (item > pAtual->item)
         {
             pAnterior = pAtual;
             pAtual = pAtual->prox;
         }
-        
+        // previne insercao de itens iguais
         if (pAtual->item == item)
             return false;
         
@@ -183,7 +189,7 @@ void inverter(LISTA *l)
         pAtual->prox = aux; // troca o proximo do pAtual para ser o anterior salvo em aux
                             // ja que o valor em pAtual->ant foi trocado
         pAtual = pAtual->ant;   // avanca para o proximo no porque, depois da troca, o
-                                // novo anterior eh o antigo proximo
+                                // novo anterior e o antigo proximo
     }
     if (aux != NULL)
         l->cabeca = aux->ant;

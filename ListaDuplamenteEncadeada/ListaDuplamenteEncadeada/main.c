@@ -32,6 +32,7 @@ void testarInserir(LISTA *l)
     imprimirStatus(l);
 }
 
+// Testa a insercao dos valores na cauda da lista
 void testarInserirNoFinal(LISTA *l)
 {
     printf("=> Teste de Inserir no final\n");
@@ -131,7 +132,7 @@ void testarAlterar(LISTA *l)
     }
 }
 
-
+// Testa a insercao dos valores de maneira que a lista mantenha a ordem crescente
 void testarInsercaoOrdenada(LISTA *l)
 {
     printf("=> Teste de Insercao Ordenada\n");
@@ -150,6 +151,7 @@ void testarInsercaoOrdenada(LISTA *l)
     imprimirStatus(l);
 }
 
+// Testa a inversao real da lista, nao apenas exibicao de tras para frente
 void testarInverter(LISTA *l)
 {
     printf("=> Teste de Inverter\n");
@@ -159,7 +161,7 @@ void testarInverter(LISTA *l)
 
 /////////////////////////////////////////////////////
 
-int main(){
+int main(void){
     LISTA l;
     
     inicializar(&l);
