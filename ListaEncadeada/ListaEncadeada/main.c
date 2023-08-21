@@ -216,7 +216,7 @@ void testarIntersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI)
 
 /////////////////////////////////////////////////////
 
-int main(){
+int main(void){
     LISTA l;
     
     inicializar(&l);

@@ -72,9 +72,7 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
 {
     if (l->tamanho == 0)
     {
-        l->cabeca = criarNo(item, NULL);
-        l->tamanho++;
-        l->cauda = l->cabeca;
+        insercaoListaVazia(item, l);
         return true;
     }
     if (l->cabeca->item > item)
