@@ -214,6 +214,14 @@ void testarIntersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI)
     imprimirStatus(listaI);
 }
 
+
+void testarInverter(LISTA *l)
+{
+    printf("=> Teste de inverter\n");
+    inverter(l);
+    imprimirStatus(l);
+}
+
 /////////////////////////////////////////////////////
 
 int main(void){
@@ -222,14 +230,14 @@ int main(void){
     inicializar(&l);
     testarInsercaoOrdenada(&l);
 //    testarInserir(&l);
-//    inverter(&l);
+    testarInverter(&l);
 //    imprimirStatus(&l);
 //    testarInserirNaPos(&l);
 //    testarInserirNoFinal(&l);
 //    testarBuscar(&l);
 //    testarAlterar(&l);
 //    testarRemover(&l);
-    testarRemoverNaPos(&l);
+//    testarRemoverNaPos(&l);
 //    testarClonar(&l);
     destruir(&l);
         
