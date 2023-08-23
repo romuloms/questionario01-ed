@@ -56,14 +56,19 @@ bool vazia(LISTA *l);
 */
 bool inserir(ITEM item, LISTA *l);
 
+// insere itens na cauda da lista atualizando o ponteiro prox da antiga cauda
 bool inserirNoFinal(ITEM item, LISTA *l);
 
+// primeira insercao da lista (funcao criada para evitar duplicacao de codigo)
 bool insercaoListaVazia(ITEM item, LISTA *l);
 
+// insercao dos elementos inteiros em ordem crescente
 bool insercaoOrdenada(ITEM item, LISTA *l);
 
+// retorna a intersecao entre duas listas
 void intersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI);
 
+// inverte a lista alvo alterando seus ponteiros
 void inverter(LISTA *l);
 
 /*
@@ -99,8 +104,10 @@ bool inserirNaPos(ITEM item, int i, LISTA *l);
 */
 bool remover(ITEM item, LISTA *l);
 
+// remover um item na posicao desejada
 bool removerNaPos(ITEM *item, int i, LISTA *l);
 
+// clona a lista criando uma nova lista e alocando memoria para esta
 LISTA* clonar(LISTA *l);
 
 // Exibicao de um item da lista

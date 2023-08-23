@@ -228,8 +228,8 @@ int main(void){
     LISTA l;
     
     inicializar(&l);
-    testarInsercaoOrdenada(&l);
-//    testarInserir(&l);
+//    testarInsercaoOrdenada(&l);
+    testarInserir(&l);
     testarInverter(&l);
 //    imprimirStatus(&l);
 //    testarInserirNaPos(&l);
