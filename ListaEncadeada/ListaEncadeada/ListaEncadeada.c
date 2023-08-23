@@ -70,11 +70,13 @@ bool insercaoListaVazia(ITEM item, LISTA *l)
 
 bool insercaoOrdenada(ITEM item, LISTA *l)
 {
+    // lista vazia
     if (l->tamanho == 0)
     {
         insercaoListaVazia(item, l);
         return true;
     }
+    // insercao na cabeca
     if (l->cabeca->item > item)
     {
         NO *p = criarNo(item, l->cabeca);
@@ -82,6 +84,7 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         l->tamanho++;
         return true;
     }
+    // insercao na cauda
     if (l->cauda->item < item)
     {
         NO *p = criarNo(item, NULL);
@@ -90,23 +93,27 @@ bool insercaoOrdenada(ITEM item, LISTA *l)
         l->tamanho++;
         return true;
     }
+    // impede insercao de itens repetidos
     if ((l->cabeca->item == item) || (l->cauda->item == item))
         return false;
     else
     {
         NO *pAnterior = l->cabeca;
         NO *pAtual = l->cabeca->prox;
-
+        // enquanto o item a ser inserido for maior que o item
+        // do ponteiro atual...
         while (item > pAtual->item)
         {
+            // avanca os ponteiros pAnterior e pAtual
             pAnterior = pAtual;
             pAtual = pAtual->prox;
         }
-        
+        // impede insercao de itens repetidos
         if (pAtual->item == item)
             return false;
-        
+        // cria o novo No tendo como proximo o pAtual
         NO *p = criarNo(item, pAtual);
+        // o anterior do pAtual tera como proximo o novo No
         pAnterior->prox = p;
         l->tamanho++;
         return true;
@@ -121,6 +128,7 @@ bool inserir(ITEM item, LISTA *l)
         insercaoListaVazia(item, l);
         return true;
     }
+    // a nova cabeca tera como prox a antiga cabeca
     l->cabeca = criarNo(item, l->cabeca);
     l->tamanho++;
     return true;
@@ -129,13 +137,17 @@ bool inserir(ITEM item, LISTA *l)
 
 bool inserirNoFinal(ITEM item, LISTA *l)
 {
+    // lista vazia
     if (l->cabeca == NULL)
     {
         insercaoListaVazia(item, l);
         return true;
     }
+    // cria no sem ponteiro prox
     NO* pNovo = criarNo(item, NULL);
+    // prox da antiga cauda sera a nova cauda
     l->cauda->prox = pNovo;
+    // atualiza a cauda
     l->cauda = pNovo;
     l->tamanho++;
     return true;
@@ -151,10 +163,10 @@ void inverter(LISTA *l)
     
     while (pAtual)
     {
-        pAux = pAtual->prox;
-        pAtual->prox = pAnt;
-        pAnt = pAtual;
-        pAtual = pAux;
+        pAux = pAtual->prox;    // salva o ponteiro prox para poder usar depois
+        pAtual->prox = pAnt;    // antigo prox sera novo ant
+        pAnt = pAtual;  // avanca o ponteiro
+        pAtual = pAux;  // avanca o ponteiro
     }
     
     if (pAnt)
@@ -184,7 +196,11 @@ void intersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI)
 {
     NO* cabecaA = listaA->cabeca;
     NO* cabecaB = listaB->cabeca;
-    
+    /*
+     os for encadeados irao comparar todos os itens da lista B
+     com o primeiro item da lista A, depois todos os itens da lista B
+     com o segundo item da lista A e assim em diante.
+    */
     for (int i = 0; i < listaA->tamanho; i++)
     {
         cabecaB = listaB->cabeca;
@@ -263,15 +279,19 @@ bool inserirNaPos(ITEM item, int i, LISTA *l)
 
 bool removerNaPos(ITEM *elem, int i, LISTA *l)
 {
+    // posicao invalida
     if (i < 0 || i >= tamanho(l))
         return false;
     
     else
     {
         NO* pAnterior = l->cabeca;
-        
+        // remocao na cabeca
         if (i == 0)
         {
+            // o endereco do ponteiro elem vai ser o endereco do
+            // item da cabeca para tornar possivel retornar o
+            // item que foi removido
             *elem = l->cabeca->item;
             l->cabeca = l->cabeca->prox;
             l->tamanho--;
@@ -287,6 +307,7 @@ bool removerNaPos(ITEM *elem, int i, LISTA *l)
                 pAnterior = pAtual;
                 pAtual = pAtual->prox;
             }
+            // mesma logica para a remocao na cabeca
             *elem = pAtual->item;
             pAnterior->prox = pAtual->prox;
             l->tamanho--;
@@ -346,22 +367,26 @@ void exibirItem(ITEM i)
 
 LISTA* clonar(LISTA *l)
 {
+    // alocando a devida memoria para a lista clonada
     LISTA* listaClonada = (LISTA *)malloc(sizeof(LISTA));
+    // faz os sets iniciais de qualquer lista
     inicializar(listaClonada);
     
     NO* ponteiroAux = l->cabeca;
-    
+    // lista vazia
     if (l->cabeca == NULL)
         return listaClonada;
-    
+    // clona a cabeca
     listaClonada->cabeca = criarNo(ponteiroAux->item, ponteiroAux->prox);
     listaClonada->tamanho++;
     ponteiroAux = ponteiroAux->prox;
     
     if (ponteiroAux)
     {
+        // enquanto o ponteiro atual tiver um prox...
         while (ponteiroAux->prox)
         {
+            // clona item a item da lista original
             ponteiroAux = criarNo(ponteiroAux->item, ponteiroAux->prox);
             listaClonada->tamanho++;
             ponteiroAux = ponteiroAux->prox;

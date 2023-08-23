@@ -230,14 +230,14 @@ int main(void){
     inicializar(&l);
 //    testarInsercaoOrdenada(&l);
     testarInserir(&l);
-    testarInverter(&l);
+//    testarInverter(&l);
 //    imprimirStatus(&l);
 //    testarInserirNaPos(&l);
 //    testarInserirNoFinal(&l);
 //    testarBuscar(&l);
 //    testarAlterar(&l);
 //    testarRemover(&l);
-//    testarRemoverNaPos(&l);
+    testarRemoverNaPos(&l);
 //    testarClonar(&l);
     destruir(&l);
         
