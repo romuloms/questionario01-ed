@@ -39,6 +39,7 @@ void testarInserir(LISTA *l)
     imprimirStatus(l);
 }
 
+// Testa a insercao de maneira ordenada
 void testarInsercaoOrdenada(LISTA *l)
 {
     printf("=> Teste de Insercao Ordenada\n");
@@ -157,13 +158,14 @@ void testarAlterar(LISTA *l)
     }
 }
 
-
+// Testa a remocao de valores
 void testarRemover(LISTA *l)
 {
     printf("=> Teste da Remocao\n");
     int i;
     printf("Digite o item que deseja remover (ou -1 para sair): ");
     scanf("%d", &i);
+    // Loop com controle de decisao
     while (i != -1)
     {
         if (remover(i, l))
@@ -179,7 +181,7 @@ void testarRemover(LISTA *l)
     }
 }
 
-
+// Teste de remocao passando a posicao do elemento como argumento
 void testarRemoverNaPos(LISTA *l)
 {
     printf("=> Teste da Remocao na posicao\n");
@@ -196,7 +198,7 @@ void testarRemoverNaPos(LISTA *l)
     imprimirStatus(l);
 }
 
-
+// Teste de clonagem de lista
 void testarClonar(LISTA *l)
 {
     printf("=> Teste da Clonagem\n");
@@ -205,7 +207,7 @@ void testarClonar(LISTA *l)
     imprimirStatus(listaClonada);
 }
 
-
+// Teste de intersecao entre listas
 void testarIntersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI)
 {
     printf("=> Teste de intersecao\n");
@@ -214,7 +216,7 @@ void testarIntersecao(LISTA *listaA, LISTA *listaB, LISTA *listaI)
     imprimirStatus(listaI);
 }
 
-
+// Teste de inversao de lista
 void testarInverter(LISTA *l)
 {
     printf("=> Teste de inverter\n");
