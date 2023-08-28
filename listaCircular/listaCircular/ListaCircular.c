@@ -26,6 +26,8 @@ bool igual(ITEM x, ITEM y)
 
 void inicializar(LISTA *l)
 {
+    // aloca o espaco de memoria necessario para um no que
+    // ira sempre apontar para o primeiro no da lista
     l->cabeca = (NO*) malloc(sizeof(NO));
     l->cabeca->prox = l->cabeca;  // faz a referencia circular
     l->tamanho = 0;
@@ -48,18 +50,29 @@ NO* criarNo(ITEM item, NO *prox)
 
 LISTA* clonar(LISTA *l)
 {
+    // aloca o espaco de memoria necessario para outra lista
     LISTA* listaClonada = (LISTA *) malloc(sizeof(LISTA)*l->tamanho);
+    // inicializa a cabeca da lista clonada fazendo a referencia circular
     inicializar(listaClonada);
 
+    // no auxiliar que guarda a referencia do proximo no da cabeca
+    // da lista l passada como argumento da funcao
     NO* auxL = l->cabeca->prox;
+    // o no auxiliar da lista clonada e a propria cabeca da lista
     NO* auxClonada = listaClonada->cabeca;
+    // no auxiliar extra para guardar referencias dos novos nos
     NO* novoNo = NULL;
-    
+    // enquanto auxL nao for o ultimo elemento da lista...
     while (auxL != l->cabeca)
     {
+        // cria um novo no com o mesmo item do atual auxL
+        // na primeira posicao da lista clonada
         novoNo = criarNo(auxL->item, listaClonada->cabeca);
+        // cria a conexao entre o novo no e a lista clonada
+        // na mesma ordem da lista original
         auxClonada->prox = novoNo;
         listaClonada->tamanho++;
+        // avanca os auxiliares
         auxL = auxL->prox;
         auxClonada = auxClonada->prox;
     }
@@ -87,6 +100,9 @@ bool vazia(LISTA *l)
 
 
 bool inserir(ITEM item, LISTA *l){
+    // o proximo no do ponteiro cabeca (que e o primeiro no da lista)
+    // vai ser um novo no que, por sua vez, tera como proximo o
+    // atual primeiro no da lista
     l->cabeca->prox = criarNo(item, l->cabeca->prox);
     l->tamanho++;
     return true;

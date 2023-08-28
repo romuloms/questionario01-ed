@@ -130,7 +130,7 @@ void testarClonar(LISTA *l)
 
 /////////////////////////////////////////////////////
 
-int main(){
+int main(void){
     LISTA l;
     
     inicializar(&l);

@@ -57,6 +57,7 @@ bool vazia(LISTA *l);
 */
 bool inserir(ITEM item, LISTA *l);
 
+// Clonar a lista passada como argumento para preservar a imutabilidade
 LISTA* clonar(LISTA *l);
 
 /*
