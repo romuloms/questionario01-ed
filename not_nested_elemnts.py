@@ -13,10 +13,10 @@ def unravel(arr):
         elif isinstance(xs, list):
             return [x] + unravel(xs)
 
-def myLength(arr):
+def my_length(arr):
     return len(unravel(arr))
 
 lista = [[[[[1,[[2]]]]]],[3,4], [5,[[[[[[[[[6,[[[[7,8,9,[10]]]]]]]]]]]]]]]]
 
-print(myLength(lista))
+print(my_length(lista))
 print(unravel(lista))
