@@ -1,6 +1,4 @@
 def soma_aninhado(arr):
-    # primeiro = arr[0]
-    
     if not arr:
         return 0
     elif not (isinstance(arr[0], list)):
