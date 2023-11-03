@@ -1,10 +1,10 @@
-def soma_aninhado(arr):
+def nested_sum(arr):
     if not arr:
         return 0
     elif not (isinstance(arr[0], list)):
-        return arr[0] + soma_aninhado(arr[1:])
+        return arr[0] + nested_sum(arr[1:])
     else:
-        return soma_aninhado(arr[0]) + soma_aninhado(arr[1:])
+        return nested_sum(arr[0]) + nested_sum(arr[1:])
 
 arr = [1,2,3,4,[4,[2,2]]]
-print(soma_aninhado(arr))  
+print(nested_sum(arr))  
